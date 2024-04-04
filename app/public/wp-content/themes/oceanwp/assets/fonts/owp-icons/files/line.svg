@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 158 158" style="enable-background:new 0 0 158 158;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#2D3E50;stroke-width:6;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#2D3E50;stroke-width:6;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#2D3E50;stroke-width:6;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st3{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#2D3E50;stroke-width:6;stroke-miterlimit:10;}
+	.st4{fill:#FFFFFF;stroke:#2D3E50;stroke-width:6;stroke-miterlimit:10;}
+	.st5{fill:none;stroke:#2D3E50;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st6{fill:#2D3E50;}
+	.st7{fill:none;stroke:#2D3E50;stroke-width:6;stroke-linecap:round;stroke-miterlimit:10;}
+	.st8{fill:none;stroke:#2D3E50;stroke-width:6;stroke-miterlimit:10;stroke-dasharray:9;}
+</style>
+<g>
+	<g>
+		<path class="st2" d="M79,8.805c41.422,0,75,26.888,75,60.057c0,11.586-4.1,22.403-11.197,31.577
+			c-0.351,0.522-0.81,1.099-1.389,1.737l-0.044,0.048c-2.424,2.901-5.155,5.624-8.156,8.137
+			c-20.74,19.17-54.879,41.994-59.384,38.473c-3.917-3.061,6.451-18.032-5.511-20.523c-0.834-0.096-1.667-0.199-2.492-0.315
+			l-0.016-0.001v-0.001C30.679,123.001,4,98.426,4,68.861C3.999,35.693,37.578,8.805,79,8.805L79,8.805z"/>
+	</g>
+	<g>
+		<polyline class="st5" points="39.156,56.795 39.156,86.311 56.085,86.311 		"/>
+		<line class="st5" x1="65.007" y1="86.311" x2="65.007" y2="56.795"/>
+		<polyline class="st5" points="75.422,86.311 75.422,56.795 96.543,86.311 96.543,56.795 		"/>
+		<g>
+			<polyline class="st5" points="123.761,56.795 106.124,56.795 106.124,71.553 106.124,86.311 123.761,86.311 			"/>
+			<line class="st5" x1="123.761" y1="71.553" x2="106.124" y2="71.553"/>
+		</g>
+	</g>
+</g>
+</svg>
