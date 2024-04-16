@@ -1,6 +1,61 @@
-/*! elementor - v3.20.0 - 26-03-2024 */
+/*! elementor - v3.21.0 - 15-04-2024 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
+
+/***/ "../assets/dev/js/utils/react.js":
+/*!***************************************!*\
+  !*** ../assets/dev/js/utils/react.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "../node_modules/@babel/runtime/helpers/typeof.js");
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+var React = _interopRequireWildcard(__webpack_require__(/*! react */ "react"));
+var ReactDOM = _interopRequireWildcard(__webpack_require__(/*! react-dom */ "react-dom"));
+var _client = __webpack_require__(/*! react-dom/client */ "../node_modules/react-dom/client.js");
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+/**
+ * Support conditional rendering of a React App to the DOM, based on the React version.
+ * We use `createRoot` when available, but fallback to `ReactDOM.render` for older versions.
+ *
+ * @param { React.ReactElement } app        The app to render.
+ * @param { HTMLElement }        domElement The DOM element to render the app into.
+ *
+ * @return {{ unmount: () => void }} The unmount function.
+ */
+function render(app, domElement) {
+  var unmountFunction;
+  try {
+    var root = (0, _client.createRoot)(domElement);
+    root.render(app);
+    unmountFunction = function unmountFunction() {
+      root.unmount();
+    };
+  } catch (e) {
+    // eslint-disable-next-line react/no-deprecated
+    ReactDOM.render(app, domElement);
+    unmountFunction = function unmountFunction() {
+      // eslint-disable-next-line react/no-deprecated
+      ReactDOM.unmountComponentAtNode(domElement);
+    };
+  }
+  return {
+    unmount: unmountFunction
+  };
+}
+var _default = {
+  render: render
+};
+exports["default"] = _default;
+
+/***/ }),
 
 /***/ "../modules/ai/assets/js/editor/actions-data.js":
 /*!******************************************************!*\
@@ -137,7 +192,6 @@ exports.translateLanguages = translateLanguages;
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-/* provided dependency */ var ReactDOM = __webpack_require__(/*! react-dom */ "react-dom");
 
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
@@ -151,9 +205,11 @@ var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtim
 var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "../node_modules/@babel/runtime/helpers/inherits.js"));
 var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "../node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
 var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "../node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+var _react2 = _interopRequireDefault(__webpack_require__(/*! elementor-utils/react */ "../assets/dev/js/utils/react.js"));
 var _app = _interopRequireDefault(__webpack_require__(/*! ./app */ "../modules/ai/assets/js/editor/app.js"));
 var _i18n = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 var _aiPromotionInfotipWrapper = _interopRequireDefault(__webpack_require__(/*! ./components/ai-promotion-infotip-wrapper */ "../modules/ai/assets/js/editor/components/ai-promotion-infotip-wrapper.js"));
+var _promotionIntroductionSessionValidator = __webpack_require__(/*! ./utils/promotion-introduction-session-validator */ "../modules/ai/assets/js/editor/utils/promotion-introduction-session-validator.js");
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2.default)(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2.default)(this, result); }; }
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 var AiBehavior = /*#__PURE__*/function (_Marionette$Behavior) {
@@ -199,20 +255,21 @@ var AiBehavior = /*#__PURE__*/function (_Marionette$Behavior) {
       var rootElement = document.createElement('div');
       document.body.append(rootElement);
       window.elementorAiCurrentContext = this.getOption('context');
-      ReactDOM.render( /*#__PURE__*/_react.default.createElement(_app.default, {
-        type: this.getOption('type'),
-        controlType: this.getOption('controlType'),
-        getControlValue: this.getOption('getControlValue'),
-        setControlValue: this.getOption('setControlValue'),
-        additionalOptions: this.getOption('additionalOptions'),
-        controlView: this.getOption('controlView'),
-        onClose: function onClose() {
-          ReactDOM.unmountComponentAtNode(rootElement);
-          rootElement.remove();
-        },
-        colorScheme: colorScheme,
-        isRTL: isRTL
-      }), rootElement);
+      var _ReactUtils$render = _react2.default.render( /*#__PURE__*/_react.default.createElement(_app.default, {
+          type: this.getOption('type'),
+          controlType: this.getOption('controlType'),
+          getControlValue: this.getOption('getControlValue'),
+          setControlValue: this.getOption('setControlValue'),
+          additionalOptions: this.getOption('additionalOptions'),
+          controlView: this.getOption('controlView'),
+          onClose: function onClose() {
+            unmount();
+            rootElement.remove();
+          },
+          colorScheme: colorScheme,
+          isRTL: isRTL
+        }), rootElement),
+        unmount = _ReactUtils$render.unmount;
     }
   }, {
     key: "getAiButtonLabel",
@@ -238,6 +295,11 @@ var AiBehavior = /*#__PURE__*/function (_Marionette$Behavior) {
             header: (0, _i18n.__)('Unleash your creativity.', 'elementor'),
             contentText: (0, _i18n.__)('With Elementor AI, you can generate any image you would like for your website.', 'elementor')
           };
+        case 'media-edit':
+          return {
+            header: (0, _i18n.__)('Unleash your creativity.', 'elementor'),
+            contentText: (0, _i18n.__)('With Elementor AI, you can edit images for your website.', 'elementor')
+          };
         case 'code':
           return {
             header: (0, _i18n.__)('Let the elves take care of it.', 'elementor'),
@@ -246,6 +308,15 @@ var AiBehavior = /*#__PURE__*/function (_Marionette$Behavior) {
         default:
           return null;
       }
+    }
+  }, {
+    key: "isMediaPlaceholder",
+    value: function isMediaPlaceholder(controlType) {
+      var _this$view$options$co, _this$view$options$co2;
+      if (controlType !== 'media') {
+        return false;
+      }
+      return (_this$view$options$co = this.view.options.container.settings.get(this.view.model.get('name'))) === null || _this$view$options$co === void 0 ? void 0 : (_this$view$options$co2 = _this$view$options$co.url) === null || _this$view$options$co2 === void 0 ? void 0 : _this$view$options$co2.includes('elementor/assets/images/placeholder.png');
     }
   }, {
     key: "onRender",
@@ -275,14 +346,14 @@ var AiBehavior = /*#__PURE__*/function (_Marionette$Behavior) {
       }
       $wrap.after($button);
       var controlType = this.view.model.get('type');
+      if ('media' === controlType && !this.isMediaPlaceholder(controlType)) {
+        controlType = 'media-edit';
+      }
       var promotionTexts = this.getPromotionTexts(controlType);
       if (!promotionTexts) {
         return;
       }
-      var editorSessionValue = sessionStorage.getItem('ai_promotion_introduction_editor_session_key');
-      if (!editorSessionValue || editorSessionValue !== EDITOR_SESSION_ID) {
-        sessionStorage.setItem('ai_promotion_introduction_editor_session_key', EDITOR_SESSION_ID);
-      } else {
+      if (!(0, _promotionIntroductionSessionValidator.shouldShowPromotionIntroduction)()) {
         return;
       }
       setTimeout(function () {
@@ -293,7 +364,7 @@ var AiBehavior = /*#__PURE__*/function (_Marionette$Behavior) {
         }
         var rootElement = document.createElement('div');
         document.body.append(rootElement);
-        var _ReactUtils$render = ReactUtils.render( /*#__PURE__*/_react.default.createElement(_aiPromotionInfotipWrapper.default, {
+        var _ReactUtils$render2 = _react2.default.render( /*#__PURE__*/_react.default.createElement(_aiPromotionInfotipWrapper.default, {
             anchor: $button[0],
             header: promotionTexts.header,
             contentText: promotionTexts.contentText,
@@ -304,7 +375,7 @@ var AiBehavior = /*#__PURE__*/function (_Marionette$Behavior) {
             colorScheme: ((_elementor2 = elementor) === null || _elementor2 === void 0 ? void 0 : (_elementor2$getPrefer = _elementor2.getPreferences) === null || _elementor2$getPrefer === void 0 ? void 0 : _elementor2$getPrefer.call(_elementor2, 'ui_theme')) || 'auto',
             isRTL: elementorCommon.config.isRTL
           }), rootElement),
-          unmount = _ReactUtils$render.unmount;
+          unmount = _ReactUtils$render2.unmount;
       }, 1000);
     }
   }]);
@@ -575,10 +646,18 @@ var AiPromotionInfotipContent = function AiPromotionInfotipContent(props) {
     elevation: 0
   }, /*#__PURE__*/_react.default.createElement(_ui.CardHeader, {
     subheader: "ELEMENTOR AI"
-  }), /*#__PURE__*/_react.default.createElement(_ui.CardContent, null, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+  }), /*#__PURE__*/_react.default.createElement(_ui.CardContent, {
+    sx: {
+      pt: 1
+    }
+  }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
     variant: "subtitle2",
-    color: "text.secondary"
+    color: "text.secondary",
+    sx: {
+      pb: 0.5
+    }
   }, props.header), /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    variant: "body2",
     color: "text.secondary"
   }, props.contentText)), /*#__PURE__*/_react.default.createElement(_ui.CardActions, {
     disableSpacing: true,
@@ -637,7 +716,10 @@ var AiPromotionInfotipWrapper = function AiPromotionInfotipWrapper(_ref) {
     controlType = _ref.controlType,
     unmountAction = _ref.unmountAction,
     colorScheme = _ref.colorScheme,
-    isRTL = _ref.isRTL;
+    isRTL = _ref.isRTL,
+    clickAction = _ref.clickAction,
+    placement = _ref.placement,
+    offset = _ref.offset;
   var focusOutListener = (0, _focusOutListener.useFocusOutListener)();
   var _useIntroduction = (0, _useIntroduction2.default)("ai_promotion_introduction_".concat(controlType)),
     isViewed = _useIntroduction.isViewed,
@@ -657,6 +739,8 @@ var AiPromotionInfotipWrapper = function AiPromotionInfotipWrapper(_ref) {
   }, /*#__PURE__*/_react.default.createElement(_aiPromotionInfotip.default, {
     anchor: anchor,
     focusOutListener: focusOutListener,
+    placement: placement,
+    offset: offset,
     content: /*#__PURE__*/_react.default.createElement(_aiPromotionInfotipContent.default, {
       focusOutListener: focusOutListener,
       header: header,
@@ -670,7 +754,11 @@ var AiPromotionInfotipWrapper = function AiPromotionInfotipWrapper(_ref) {
         markAsViewed();
         focusOutListener.remove();
         unmountAction();
-        anchor.click();
+        if (clickAction) {
+          clickAction();
+        } else {
+          anchor.click();
+        }
       }
     })
   }))));
@@ -682,7 +770,10 @@ AiPromotionInfotipWrapper.propTypes = {
   controlType: PropTypes.string,
   unmountAction: PropTypes.func,
   colorScheme: PropTypes.string,
-  isRTL: PropTypes.bool
+  isRTL: PropTypes.bool,
+  clickAction: PropTypes.func,
+  placement: PropTypes.string,
+  offset: PropTypes.object
 };
 var _default = AiPromotionInfotipWrapper;
 exports["default"] = _default;
@@ -740,7 +831,13 @@ var StyledPopper = (0, _ui.styled)(_ui.Popper)(function (_ref) {
 function AiPromotionInfotip(_ref2) {
   var anchor = _ref2.anchor,
     content = _ref2.content,
-    focusOutListener = _ref2.focusOutListener;
+    focusOutListener = _ref2.focusOutListener,
+    placement = _ref2.placement,
+    _ref2$offset = _ref2.offset,
+    offset = _ref2$offset === void 0 ? {
+      x: 0,
+      y: 0
+    } : _ref2$offset;
   var positionRef = _react.default.useRef({
     x: 0,
     y: 0,
@@ -755,8 +852,8 @@ function AiPromotionInfotip(_ref2) {
       width = _anchor$getBoundingCl.width,
       height = _anchor$getBoundingCl.height;
     positionRef.current = {
-      x: x,
-      y: y,
+      x: x + offset.x,
+      y: y + offset.y,
       width: width,
       height: height
     };
@@ -772,7 +869,7 @@ function AiPromotionInfotip(_ref2) {
     arrow: true,
     open: true,
     title: content,
-    placement: "right",
+    placement: placement || 'left',
     PopperComponent: StyledPopper,
     PopperProps: {
       onClick: function onClick() {
@@ -794,7 +891,9 @@ function AiPromotionInfotip(_ref2) {
 AiPromotionInfotip.propTypes = {
   anchor: PropTypes.element.isRequired,
   content: PropTypes.object.isRequired,
-  focusOutListener: PropTypes.object.isRequired
+  focusOutListener: PropTypes.object.isRequired,
+  placement: PropTypes.string,
+  offset: PropTypes.object
 };
 
 /***/ }),
@@ -1254,20 +1353,20 @@ var PromptErrorMessage = function PromptErrorMessage(_ref) {
     var featureName = (_error$extra_data = error.extra_data) === null || _error$extra_data === void 0 ? void 0 : _error$extra_data.featureName;
     var messages = {
       default: {
-        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('Unknown error. Please try again later.', 'elementor')),
-        description: (0, _i18n.__)('Error code:', 'elementor') + ' ' + error,
-        buttonText: (0, _i18n.__)('Try Again', 'elementor'),
+        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('There was a glitch.', 'elementor')),
+        description: (0, _i18n.__)('Wait a moment and give it another go, or try tweaking the prompt.', 'elementor'),
+        buttonText: (0, _i18n.__)('Try again', 'elementor'),
         buttonAction: onRetry
       },
       service_outage_internal: {
-        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('Elementor AI is temporarily unavailable', 'elementor')),
-        description: (0, _i18n.__)('Seems like we are experiencing technical difficulty. We should be up and running shortly.', 'elementor'),
-        buttonText: (0, _i18n.__)('Try Again', 'elementor'),
+        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('There was a glitch.', 'elementor')),
+        description: (0, _i18n.__)('Wait a moment and give it another go.', 'elementor'),
+        buttonText: (0, _i18n.__)('Try again', 'elementor'),
         buttonAction: onRetry
       },
       invalid_connect_data: {
-        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('Reconnect your account', 'elementor')),
-        description: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, (0, _i18n.__)('We couldn\'t connect to your account due to technical difficulties on our end. Reconnect your account to continue.', 'elementor'), ' ', /*#__PURE__*/_react.default.createElement("a", {
+        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('There was a glitch.', 'elementor')),
+        description: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, (0, _i18n.__)('Try exiting Elementor and sign in again.', 'elementor'), ' ', /*#__PURE__*/_react.default.createElement("a", {
           href: "https://elementor.com/help/disconnecting-reconnecting-your-elementor-account/",
           target: "_blank",
           rel: "noreferrer"
@@ -1287,9 +1386,9 @@ var PromptErrorMessage = function PromptErrorMessage(_ref) {
       },
       quota_reached_trail: getQuotaReachedTrailMessage(featureName),
       quota_reached_subscription: {
-        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('It\'s time to upgrade.', 'elementor')),
-        description: (0, _i18n.__)('Love Elementor AI? Upgrade to continue creating with built-in image, text and custom code generators.', 'elementor'),
-        buttonText: (0, _i18n.__)('Upgrade', 'elementor'),
+        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('Looks like you\'re out of credits.', 'elementor')),
+        description: (0, _i18n.__)('Ready to take it to the next level?', 'elementor'),
+        buttonText: (0, _i18n.__)('Upgrade now', 'elementor'),
         buttonAction: function buttonAction() {
           return window.open('https://go.elementor.com/ai-popup-purchase-limit-reached/', '_blank');
         }
@@ -1301,6 +1400,24 @@ var PromptErrorMessage = function PromptErrorMessage(_ref) {
       invalid_prompts: {
         text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('We were unable to generate that prompt.', 'elementor')),
         description: (0, _i18n.__)('Seems like the prompt contains words that could generate harmful content. Write a different prompt to continue.', 'elementor')
+      },
+      service_unavailable: {
+        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('There was a glitch.', 'elementor')),
+        description: (0, _i18n.__)('Wait a moment and give it another go, or try tweaking the prompt.', 'elementor'),
+        buttonText: (0, _i18n.__)('Try again', 'elementor'),
+        buttonAction: onRetry
+      },
+      request_timeout_error: {
+        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('There was a glitch.', 'elementor')),
+        description: (0, _i18n.__)('Wait a moment and give it another go, or try tweaking the prompt.', 'elementor'),
+        buttonText: (0, _i18n.__)('Try again', 'elementor'),
+        buttonAction: onRetry
+      },
+      invalid_token: {
+        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('Try again', 'elementor')),
+        description: (0, _i18n.__)('Try exiting Elementor and sign in again.', 'elementor'),
+        buttonText: (0, _i18n.__)('Reconnect', 'elementor'),
+        buttonAction: onRetry
       }
     };
     return messages[errMsg] || messages.default;
@@ -3545,7 +3662,7 @@ var VoicePromotionAlert = function VoicePromotionAlert(props) {
   var _useIntroduction = (0, _useIntroduction2.default)(props.introductionKey),
     isViewed = _useIntroduction.isViewed,
     markAsViewed = _useIntroduction.markAsViewed;
-  if (!isViewed) {
+  if (isViewed) {
     return null;
   }
   return /*#__PURE__*/_react.default.createElement(_ui.Box, {
@@ -5456,6 +5573,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = void 0;
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "../node_modules/@babel/runtime/helpers/classCallCheck.js"));
 var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "../node_modules/@babel/runtime/helpers/createClass.js"));
 var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "../node_modules/@babel/runtime/helpers/inherits.js"));
@@ -5464,6 +5582,9 @@ var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/run
 var _aiBehavior = _interopRequireDefault(__webpack_require__(/*! ./ai-behavior */ "../modules/ai/assets/js/editor/ai-behavior.js"));
 var _i18n = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 var _constants = __webpack_require__(/*! ./pages/form-media/constants */ "../modules/ai/assets/js/editor/pages/form-media/constants/index.js");
+var _aiPromotionInfotipWrapper = _interopRequireDefault(__webpack_require__(/*! ./components/ai-promotion-infotip-wrapper */ "../modules/ai/assets/js/editor/components/ai-promotion-infotip-wrapper.js"));
+var _react2 = _interopRequireDefault(__webpack_require__(/*! elementor-utils/react */ "../assets/dev/js/utils/react.js"));
+var _promotionIntroductionSessionValidator = __webpack_require__(/*! ./utils/promotion-introduction-session-validator */ "../modules/ai/assets/js/editor/utils/promotion-introduction-session-validator.js");
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2.default)(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2.default)(this, result); }; }
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 var Module = /*#__PURE__*/function (_elementorModules$edi) {
@@ -5476,7 +5597,57 @@ var Module = /*#__PURE__*/function (_elementorModules$edi) {
   (0, _createClass2.default)(Module, [{
     key: "onElementorInit",
     value: function onElementorInit() {
+      var _this = this;
       elementor.hooks.addFilter('controls/base/behaviors', this.registerControlBehavior.bind(this));
+      window.$e.commands.on('run:after', function (component, command, args) {
+        if ('document/elements/create' === command) {
+          _this.onCreateContainer(args);
+        }
+      });
+    }
+  }, {
+    key: "onCreateContainer",
+    value: function onCreateContainer(args) {
+      if (args.container.id !== 'document' || args.model.elType !== 'container') {
+        return;
+      }
+      if (!(0, _promotionIntroductionSessionValidator.shouldShowPromotionIntroduction)()) {
+        return;
+      }
+      var element = args.container.view.$el[0];
+      var rootBox = element.getBoundingClientRect();
+      if (!rootBox || 0 === rootBox.width || 0 === rootBox.height) {
+        return;
+      }
+      var _document$querySelect = document.querySelector('#elementor-preview-iframe').getBoundingClientRect(),
+        canvasOffsetX = _document$querySelect.x,
+        canvasOffsetY = _document$querySelect.y;
+      setTimeout(function () {
+        var _elementor, _elementor$getPrefere;
+        var rootElement = document.createElement('div');
+        document.body.append(rootElement);
+        var _ReactUtils$render = _react2.default.render( /*#__PURE__*/_react.default.createElement(_aiPromotionInfotipWrapper.default, {
+            "test-id": "ai-promotion-infotip-wrapper",
+            anchor: element,
+            clickAction: function clickAction() {
+              window.elementorFrontend.elements.$body.find('.e-ai-layout-button').trigger('click');
+            },
+            header: (0, _i18n.__)('Give your workflow a boost.', 'elementor'),
+            contentText: (0, _i18n.__)('Build containers with AI and generate any layout you’d need for your site’s design.', 'elementor'),
+            controlType: 'container',
+            unmountAction: function unmountAction() {
+              unmount();
+            },
+            colorScheme: ((_elementor = elementor) === null || _elementor === void 0 ? void 0 : (_elementor$getPrefere = _elementor.getPreferences) === null || _elementor$getPrefere === void 0 ? void 0 : _elementor$getPrefere.call(_elementor, 'ui_theme')) || 'auto',
+            isRTL: elementorCommon.config.isRTL,
+            placement: 'bottom',
+            offset: {
+              x: canvasOffsetX,
+              y: canvasOffsetY
+            }
+          }), rootElement),
+          unmount = _ReactUtils$render.unmount;
+      }, 1000);
     }
   }, {
     key: "registerControlBehavior",
@@ -11088,6 +11259,30 @@ exports["default"] = _default;
 
 /***/ }),
 
+/***/ "../modules/ai/assets/js/editor/utils/promotion-introduction-session-validator.js":
+/*!****************************************************************************************!*\
+  !*** ../modules/ai/assets/js/editor/utils/promotion-introduction-session-validator.js ***!
+  \****************************************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.shouldShowPromotionIntroduction = shouldShowPromotionIntroduction;
+function shouldShowPromotionIntroduction() {
+  var editorSessionValue = sessionStorage.getItem('ai_promotion_introduction_editor_session_key');
+  if (!editorSessionValue || editorSessionValue !== EDITOR_SESSION_ID) {
+    sessionStorage.setItem('ai_promotion_introduction_editor_session_key', EDITOR_SESSION_ID);
+    return true;
+  }
+  return false;
+}
+
+/***/ }),
+
 /***/ "../node_modules/clsx/dist/clsx.m.js":
 /*!*******************************************!*\
   !*** ../node_modules/clsx/dist/clsx.m.js ***!
@@ -13369,6 +13564,39 @@ if (false) {} else {
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 !function(e,t){ true?module.exports=t(__webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js"),__webpack_require__(/*! react */ "react")):0}(this,function(e,t){"use strict";function o(e){return e&&"object"==typeof e&&"default"in e?e:{default:e}}var n=o(e),i=o(t);function r(e,t){for(var o=0;o<t.length;o++){var n=t[o];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}function s(e,t,o){return t in e?Object.defineProperty(e,t,{value:o,enumerable:!0,configurable:!0,writable:!0}):e[t]=o,e}function u(){return(u=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e}).apply(this,arguments)}function a(t,e){var o,n=Object.keys(t);return Object.getOwnPropertySymbols&&(o=Object.getOwnPropertySymbols(t),e&&(o=o.filter(function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable})),n.push.apply(n,o)),n}function y(t){for(var e=1;e<arguments.length;e++){var o=null!=arguments[e]?arguments[e]:{};e%2?a(Object(o),!0).forEach(function(e){s(t,e,o[e])}):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(o)):a(Object(o)).forEach(function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(o,e))})}return t}function h(e){return(h=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function c(e,t){return(c=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function l(e,t){if(null==e)return{};var o,n=function(e,t){if(null==e)return{};for(var o,n={},a=Object.keys(e),r=0;r<a.length;r++)o=a[r],0<=t.indexOf(o)||(n[o]=e[o]);return n}(e,t);if(Object.getOwnPropertySymbols)for(var a=Object.getOwnPropertySymbols(e),r=0;r<a.length;r++)o=a[r],0<=t.indexOf(o)||Object.prototype.propertyIsEnumerable.call(e,o)&&(n[o]=e[o]);return n}function d(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function p(r){var i=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Date.prototype.toString.call(Reflect.construct(Date,[],function(){})),!0}catch(e){return!1}}();return function(){var e,t,o,n,a=h(r);return t=i?(e=h(this).constructor,Reflect.construct(a,arguments,e)):a.apply(this,arguments),o=this,!(n=t)||"object"!=typeof n&&"function"!=typeof n?d(o):n}}function m(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){if("undefined"==typeof Symbol||!(Symbol.iterator in Object(e)))return;var o=[],n=!0,a=!1,r=void 0;try{for(var i,s=e[Symbol.iterator]();!(n=(i=s.next()).done)&&(o.push(i.value),!t||o.length!==t);n=!0);}catch(e){a=!0,r=e}finally{try{n||null==s.return||s.return()}finally{if(a)throw r}}return o}(e,t)||g(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function g(e,t){if(e){if("string"==typeof e)return f(e,t);var o=Object.prototype.toString.call(e).slice(8,-1);return"Object"===o&&e.constructor&&(o=e.constructor.name),"Map"===o||"Set"===o?Array.from(e):"Arguments"===o||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(o)?f(e,t):void 0}}function f(e,t){(null==t||t>e.length)&&(t=e.length);for(var o=0,n=new Array(t);o<t;o++)n[o]=e[o];return n}function v(a,r){return new Promise(function(e,t){var o,n=new Image;n.onload=function(){return e(n)},n.onerror=t,!1==(null!==(o=a)&&!!o.match(/^\s*data:([a-z]+\/[a-z]+(;[a-z-]+=[a-z-]+)?)?(;base64)?,[a-z0-9!$&',()*+;=\-._~:@/?%\s]*\s*$/i))&&r&&(n.crossOrigin=r),n.src=a})}var b,w=!("undefined"==typeof window||"undefined"==typeof navigator||!("ontouchstart"in window||0<navigator.msMaxTouchPoints)),M="undefined"!=typeof File,O={touch:{react:{down:"onTouchStart",mouseDown:"onMouseDown",drag:"onTouchMove",move:"onTouchMove",mouseMove:"onMouseMove",up:"onTouchEnd",mouseUp:"onMouseUp"},native:{down:"touchstart",mouseDown:"mousedown",drag:"touchmove",move:"touchmove",mouseMove:"mousemove",up:"touchend",mouseUp:"mouseup"}},desktop:{react:{down:"onMouseDown",drag:"onDragOver",move:"onMouseMove",up:"onMouseUp"},native:{down:"mousedown",drag:"dragStart",move:"mousemove",up:"mouseup"}}},I=w?O.touch:O.desktop,P="undefined"!=typeof window&&window.devicePixelRatio?window.devicePixelRatio:1,C={x:.5,y:.5},x=function(){!function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&c(e,t)}(a,i["default"].Component);var e,t,o,n=p(a);function a(e){var v;return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,a),s(d(v=n.call(this,e)),"state",{drag:!1,my:null,mx:null,image:C}),s(d(v),"handleImageReady",function(e){var t=v.getInitialSize(e.width,e.height);t.resource=e,t.x=.5,t.y=.5,t.backgroundColor=v.props.backgroundColor,v.setState({drag:!1,image:t},v.props.onImageReady),v.props.onLoadSuccess(t)}),s(d(v),"clearImage",function(){v.canvas.getContext("2d").clearRect(0,0,v.canvas.width,v.canvas.height),v.setState({image:C})}),s(d(v),"handleMouseDown",function(e){(e=e||window.event).preventDefault(),v.setState({drag:!0,mx:null,my:null})}),s(d(v),"handleMouseUp",function(){v.state.drag&&(v.setState({drag:!1}),v.props.onMouseUp())}),s(d(v),"handleMouseMove",function(e){var t,o,n,a,r,i,s,u,h,c,l,d,p,g,f,m;e=e||window.event,!1!==v.state.drag&&(e.preventDefault(),n={mx:t=e.targetTouches?e.targetTouches[0].pageX:e.clientX,my:o=e.targetTouches?e.targetTouches[0].pageY:e.clientY},m=v.props.rotate,m=(m%=360)<0?m+360:m,v.state.mx&&v.state.my&&(a=v.state.mx-t,r=v.state.my-o,i=v.state.image.width*v.props.scale,s=v.state.image.height*v.props.scale,h=(u=v.getCroppingRect()).x,c=u.y,h*=i,c*=s,l=function(e){return e*(Math.PI/180)},d=Math.cos(l(m)),g=c+-a*(p=Math.sin(l(m)))+r*d,f={x:(h+a*d+r*p)/i+1/v.props.scale*v.getXScale()/2,y:g/s+1/v.props.scale*v.getYScale()/2},v.props.onPositionChange(f),n.image=y(y({},v.state.image),f)),v.setState(n),v.props.onMouseMove(e))}),s(d(v),"setCanvas",function(e){v.canvas=e}),v.canvas=null,v}return e=a,(t=[{key:"componentDidMount",value:function(){this.props.disableHiDPIScaling&&(P=1);var e,t,o=this.canvas.getContext("2d");this.props.image&&this.loadImage(this.props.image),this.paint(o),document&&(e=!!function(){var t=!1;try{var e=Object.defineProperty({},"passive",{get:function(){t=!0}});window.addEventListener("test",e,e),window.removeEventListener("test",e,e)}catch(e){t=!1}return t}()&&{passive:!1},t=I.native,document.addEventListener(t.move,this.handleMouseMove,e),document.addEventListener(t.up,this.handleMouseUp,e),w&&(document.addEventListener(t.mouseMove,this.handleMouseMove,e),document.addEventListener(t.mouseUp,this.handleMouseUp,e)))}},{key:"componentDidUpdate",value:function(e,t){this.props.image&&this.props.image!==e.image||this.props.width!==e.width||this.props.height!==e.height||this.props.backgroundColor!==e.backgroundColor?this.loadImage(this.props.image):this.props.image||t.image===C||this.clearImage();var o=this.canvas.getContext("2d");o.clearRect(0,0,this.canvas.width,this.canvas.height),this.paint(o),this.paintImage(o,this.state.image,this.props.border),e.image===this.props.image&&e.width===this.props.width&&e.height===this.props.height&&e.position===this.props.position&&e.scale===this.props.scale&&e.rotate===this.props.rotate&&t.my===this.state.my&&t.mx===this.state.mx&&t.image.x===this.state.image.x&&t.image.y===this.state.image.y&&t.backgroundColor===this.state.backgroundColor||this.props.onImageChange()}},{key:"componentWillUnmount",value:function(){var e;document&&(e=I.native,document.removeEventListener(e.move,this.handleMouseMove,!1),document.removeEventListener(e.up,this.handleMouseUp,!1),w&&(document.removeEventListener(e.mouseMove,this.handleMouseMove,!1),document.removeEventListener(e.mouseUp,this.handleMouseUp,!1)))}},{key:"isVertical",value:function(){return!this.props.disableCanvasRotation&&this.props.rotate%180!=0}},{key:"getBorders",value:function(e){var t=0<arguments.length&&void 0!==e?e:this.props.border;return Array.isArray(t)?t:[t,t]}},{key:"getDimensions",value:function(){var e=this.props,t=e.width,o=e.height,n=e.rotate,a=e.border,r={},i=m(this.getBorders(a),2),s=i[0],u=i[1],h=t,c=o;return this.isVertical()?(r.width=c,r.height=h):(r.width=h,r.height=c),r.width+=2*s,r.height+=2*u,{canvas:r,rotate:n,width:t,height:o,border:a}}},{key:"getImage",value:function(){var e=this.getCroppingRect(),t=this.state.image;e.x*=t.resource.width,e.y*=t.resource.height,e.width*=t.resource.width,e.height*=t.resource.height;var o=document.createElement("canvas");this.isVertical()?(o.width=e.height,o.height=e.width):(o.width=e.width,o.height=e.height);var n=o.getContext("2d");return n.translate(o.width/2,o.height/2),n.rotate(this.props.rotate*Math.PI/180),n.translate(-o.width/2,-o.height/2),this.isVertical()&&n.translate((o.width-o.height)/2,(o.height-o.width)/2),t.backgroundColor&&(n.fillStyle=t.backgroundColor,n.fillRect(-e.x,-e.y,t.resource.width,t.resource.height)),n.drawImage(t.resource,-e.x,-e.y),o}},{key:"getImageScaledToCanvas",value:function(){var e=this.getDimensions(),t=e.width,o=e.height,n=document.createElement("canvas");return this.isVertical()?(n.width=o,n.height=t):(n.width=t,n.height=o),this.paintImage(n.getContext("2d"),this.state.image,0,1),n}},{key:"getXScale",value:function(){var e=this.props.width/this.props.height,t=this.state.image.width/this.state.image.height;return Math.min(1,e/t)}},{key:"getYScale",value:function(){var e=this.props.height/this.props.width,t=this.state.image.height/this.state.image.width;return Math.min(1,e/t)}},{key:"getCroppingRect",value:function(){var e=this.props.position||{x:this.state.image.x,y:this.state.image.y},t=1/this.props.scale*this.getXScale(),o=1/this.props.scale*this.getYScale(),n={x:e.x-t/2,y:e.y-o/2,width:t,height:o},a=0,r=1-n.width,i=0,s=1-n.height;return(this.props.disableBoundaryChecks||1<t||1<o)&&(a=-n.width,i=-n.height,s=r=1),y(y({},n),{},{x:Math.max(a,Math.min(n.x,r)),y:Math.max(i,Math.min(n.y,s))})}},{key:"loadImage",value:function(e){var t;M&&e instanceof File?this.loadingImage=(t=e,new Promise(function(o,n){var e=new FileReader;e.onload=function(e){try{var t=v(e.target.result);o(t)}catch(e){n(e)}},e.readAsDataURL(t)}).then(this.handleImageReady).catch(this.props.onLoadFailure)):"string"==typeof e&&(this.loadingImage=v(e,this.props.crossOrigin).then(this.handleImageReady).catch(this.props.onLoadFailure))}},{key:"getInitialSize",value:function(e,t){var o,n,a=this.getDimensions();return t/e<a.height/a.width?n=e*((o=this.getDimensions().height)/t):o=t*((n=this.getDimensions().width)/e),{height:o,width:n}}},{key:"paintImage",value:function(e,t,o,n){var a,r=3<arguments.length&&void 0!==n?n:P;t.resource&&(a=this.calculatePosition(t,o),e.save(),e.translate(e.canvas.width/2,e.canvas.height/2),e.rotate(this.props.rotate*Math.PI/180),e.translate(-e.canvas.width/2,-e.canvas.height/2),this.isVertical()&&e.translate((e.canvas.width-e.canvas.height)/2,(e.canvas.height-e.canvas.width)/2),e.scale(r,r),e.globalCompositeOperation="destination-over",e.drawImage(t.resource,a.x,a.y,a.width,a.height),t.backgroundColor&&(e.fillStyle=t.backgroundColor,e.fillRect(a.x,a.y,a.width,a.height)),e.restore())}},{key:"calculatePosition",value:function(e,t){e=e||this.state.image;var o=m(this.getBorders(t),2),n=o[0],a=o[1],r=this.getCroppingRect(),i=e.width*this.props.scale,s=e.height*this.props.scale,u=-r.x*i,h=-r.y*s;return this.isVertical()?(u+=a,h+=n):(u+=n,h+=a),{x:u,y:h,height:s,width:i}}},{key:"paint",value:function(e){e.save(),e.scale(P,P),e.translate(0,0),e.fillStyle="rgba("+this.props.color.slice(0,4).join(",")+")";var t,o,n,a,r,i,s,u,h=this.props.borderRadius,c=this.getDimensions(),l=m(this.getBorders(c.border),2),d=l[0],p=l[1],g=c.canvas.height,f=c.canvas.width,h=Math.max(h,0);h=Math.min(h,f/2-d,g/2-p),e.beginPath(),t=e,a=f-2*(o=d),r=g-2*(n=p),0===(i=h)?t.rect(o,n,a,r):(s=a-i,u=r-i,t.translate(o,n),t.arc(i,i,i,Math.PI,1.5*Math.PI),t.lineTo(s,0),t.arc(s,i,i,1.5*Math.PI,2*Math.PI),t.lineTo(a,u),t.arc(s,u,i,2*Math.PI,.5*Math.PI),t.lineTo(i,r),t.arc(i,u,i,.5*Math.PI,Math.PI),t.translate(-o,-n)),e.rect(f,0,-f,g),e.fill("evenodd"),e.restore()}},{key:"render",value:function(){var e=this.props,t=(e.scale,e.rotate,e.image,e.border,e.borderRadius,e.width,e.height,e.position,e.color,e.backgroundColor,e.style),o=(e.crossOrigin,e.onLoadFailure,e.onLoadSuccess,e.onImageReady,e.onImageChange,e.onMouseUp,e.onMouseMove,e.onPositionChange,e.disableBoundaryChecks,e.disableHiDPIScaling,e.disableCanvasRotation,l(e,["scale","rotate","image","border","borderRadius","width","height","position","color","backgroundColor","style","crossOrigin","onLoadFailure","onLoadSuccess","onImageReady","onImageChange","onMouseUp","onMouseMove","onPositionChange","disableBoundaryChecks","disableHiDPIScaling","disableCanvasRotation"])),n=this.getDimensions(),a={width:n.canvas.width,height:n.canvas.height,cursor:this.state.drag?"grabbing":"grab",touchAction:"none"},r={width:n.canvas.width*P,height:n.canvas.height*P,style:y(y({},a),t)};return r[I.react.down]=this.handleMouseDown,w&&(r[I.react.mouseDown]=this.handleMouseDown),i.default.createElement("canvas",u({ref:this.setCanvas},r,o))}}])&&r(e.prototype,t),o&&r(e,o),a}();return s(x,"propTypes",{scale:n.default.number,rotate:n.default.number,image:n.default.oneOfType([n.default.string].concat(function(e){if(Array.isArray(e))return f(e)}(b=M?[n.default.instanceOf(File)]:[])||function(e){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(e))return Array.from(e)}(b)||g(b)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}())),border:n.default.oneOfType([n.default.number,n.default.arrayOf(n.default.number)]),borderRadius:n.default.number,width:n.default.number,height:n.default.number,position:n.default.shape({x:n.default.number,y:n.default.number}),color:n.default.arrayOf(n.default.number),backgroundColor:n.default.string,crossOrigin:n.default.oneOf(["","anonymous","use-credentials"]),onLoadFailure:n.default.func,onLoadSuccess:n.default.func,onImageReady:n.default.func,onImageChange:n.default.func,onMouseUp:n.default.func,onMouseMove:n.default.func,onPositionChange:n.default.func,disableBoundaryChecks:n.default.bool,disableHiDPIScaling:n.default.bool,disableCanvasRotation:n.default.bool}),s(x,"defaultProps",{scale:1,rotate:0,border:25,borderRadius:0,width:200,height:200,color:[0,0,0,.5],onLoadFailure:function(){},onLoadSuccess:function(){},onImageReady:function(){},onImageChange:function(){},onMouseUp:function(){},onMouseMove:function(){},onPositionChange:function(){},disableBoundaryChecks:!1,disableHiDPIScaling:!1,disableCanvasRotation:!0}),x});
+
+
+/***/ }),
+
+/***/ "../node_modules/react-dom/client.js":
+/*!*******************************************!*\
+  !*** ../node_modules/react-dom/client.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var m = __webpack_require__(/*! react-dom */ "react-dom");
+if (false) {} else {
+  var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+  exports.createRoot = function(c, o) {
+    i.usingClientEntryPoint = true;
+    try {
+      return m.createRoot(c, o);
+    } finally {
+      i.usingClientEntryPoint = false;
+    }
+  };
+  exports.hydrateRoot = function(c, h, o) {
+    i.usingClientEntryPoint = true;
+    try {
+      return m.hydrateRoot(c, h, o);
+    } finally {
+      i.usingClientEntryPoint = false;
+    }
+  };
+}
 
 
 /***/ }),

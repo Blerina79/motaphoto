@@ -1,4 +1,4 @@
-/*! elementor - v3.20.0 - 26-03-2024 */
+/*! elementor - v3.21.0 - 15-04-2024 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -687,6 +687,61 @@ function stylis_min (W) {
 
 /***/ }),
 
+/***/ "../assets/dev/js/utils/react.js":
+/*!***************************************!*\
+  !*** ../assets/dev/js/utils/react.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "../node_modules/@babel/runtime/helpers/typeof.js");
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+var React = _interopRequireWildcard(__webpack_require__(/*! react */ "react"));
+var ReactDOM = _interopRequireWildcard(__webpack_require__(/*! react-dom */ "react-dom"));
+var _client = __webpack_require__(/*! react-dom/client */ "../node_modules/react-dom/client.js");
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+/**
+ * Support conditional rendering of a React App to the DOM, based on the React version.
+ * We use `createRoot` when available, but fallback to `ReactDOM.render` for older versions.
+ *
+ * @param { React.ReactElement } app        The app to render.
+ * @param { HTMLElement }        domElement The DOM element to render the app into.
+ *
+ * @return {{ unmount: () => void }} The unmount function.
+ */
+function render(app, domElement) {
+  var unmountFunction;
+  try {
+    var root = (0, _client.createRoot)(domElement);
+    root.render(app);
+    unmountFunction = function unmountFunction() {
+      root.unmount();
+    };
+  } catch (e) {
+    // eslint-disable-next-line react/no-deprecated
+    ReactDOM.render(app, domElement);
+    unmountFunction = function unmountFunction() {
+      // eslint-disable-next-line react/no-deprecated
+      ReactDOM.unmountComponentAtNode(domElement);
+    };
+  }
+  return {
+    unmount: unmountFunction
+  };
+}
+var _default = {
+  render: render
+};
+exports["default"] = _default;
+
+/***/ }),
+
 /***/ "../modules/ai/assets/js/editor/ai-layout-behavior.js":
 /*!************************************************************!*\
   !*** ../modules/ai/assets/js/editor/ai-layout-behavior.js ***!
@@ -1358,20 +1413,20 @@ var PromptErrorMessage = function PromptErrorMessage(_ref) {
     var featureName = (_error$extra_data = error.extra_data) === null || _error$extra_data === void 0 ? void 0 : _error$extra_data.featureName;
     var messages = {
       default: {
-        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('Unknown error. Please try again later.', 'elementor')),
-        description: (0, _i18n.__)('Error code:', 'elementor') + ' ' + error,
-        buttonText: (0, _i18n.__)('Try Again', 'elementor'),
+        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('There was a glitch.', 'elementor')),
+        description: (0, _i18n.__)('Wait a moment and give it another go, or try tweaking the prompt.', 'elementor'),
+        buttonText: (0, _i18n.__)('Try again', 'elementor'),
         buttonAction: onRetry
       },
       service_outage_internal: {
-        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('Elementor AI is temporarily unavailable', 'elementor')),
-        description: (0, _i18n.__)('Seems like we are experiencing technical difficulty. We should be up and running shortly.', 'elementor'),
-        buttonText: (0, _i18n.__)('Try Again', 'elementor'),
+        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('There was a glitch.', 'elementor')),
+        description: (0, _i18n.__)('Wait a moment and give it another go.', 'elementor'),
+        buttonText: (0, _i18n.__)('Try again', 'elementor'),
         buttonAction: onRetry
       },
       invalid_connect_data: {
-        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('Reconnect your account', 'elementor')),
-        description: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, (0, _i18n.__)('We couldn\'t connect to your account due to technical difficulties on our end. Reconnect your account to continue.', 'elementor'), ' ', /*#__PURE__*/_react.default.createElement("a", {
+        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('There was a glitch.', 'elementor')),
+        description: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, (0, _i18n.__)('Try exiting Elementor and sign in again.', 'elementor'), ' ', /*#__PURE__*/_react.default.createElement("a", {
           href: "https://elementor.com/help/disconnecting-reconnecting-your-elementor-account/",
           target: "_blank",
           rel: "noreferrer"
@@ -1391,9 +1446,9 @@ var PromptErrorMessage = function PromptErrorMessage(_ref) {
       },
       quota_reached_trail: getQuotaReachedTrailMessage(featureName),
       quota_reached_subscription: {
-        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('It\'s time to upgrade.', 'elementor')),
-        description: (0, _i18n.__)('Love Elementor AI? Upgrade to continue creating with built-in image, text and custom code generators.', 'elementor'),
-        buttonText: (0, _i18n.__)('Upgrade', 'elementor'),
+        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('Looks like you\'re out of credits.', 'elementor')),
+        description: (0, _i18n.__)('Ready to take it to the next level?', 'elementor'),
+        buttonText: (0, _i18n.__)('Upgrade now', 'elementor'),
         buttonAction: function buttonAction() {
           return window.open('https://go.elementor.com/ai-popup-purchase-limit-reached/', '_blank');
         }
@@ -1405,6 +1460,24 @@ var PromptErrorMessage = function PromptErrorMessage(_ref) {
       invalid_prompts: {
         text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('We were unable to generate that prompt.', 'elementor')),
         description: (0, _i18n.__)('Seems like the prompt contains words that could generate harmful content. Write a different prompt to continue.', 'elementor')
+      },
+      service_unavailable: {
+        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('There was a glitch.', 'elementor')),
+        description: (0, _i18n.__)('Wait a moment and give it another go, or try tweaking the prompt.', 'elementor'),
+        buttonText: (0, _i18n.__)('Try again', 'elementor'),
+        buttonAction: onRetry
+      },
+      request_timeout_error: {
+        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('There was a glitch.', 'elementor')),
+        description: (0, _i18n.__)('Wait a moment and give it another go, or try tweaking the prompt.', 'elementor'),
+        buttonText: (0, _i18n.__)('Try again', 'elementor'),
+        buttonAction: onRetry
+      },
+      invalid_token: {
+        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('Try again', 'elementor')),
+        description: (0, _i18n.__)('Try exiting Elementor and sign in again.', 'elementor'),
+        buttonText: (0, _i18n.__)('Reconnect', 'elementor'),
+        buttonAction: onRetry
       }
     };
     return messages[errMsg] || messages.default;
@@ -1676,7 +1749,7 @@ var VoicePromotionAlert = function VoicePromotionAlert(props) {
   var _useIntroduction = (0, _useIntroduction2.default)(props.introductionKey),
     isViewed = _useIntroduction.isViewed,
     markAsViewed = _useIntroduction.markAsViewed;
-  if (!isViewed) {
+  if (isViewed) {
     return null;
   }
   return /*#__PURE__*/_react.default.createElement(_ui.Box, {
@@ -3297,7 +3370,9 @@ var Menu = function Menu(props) {
     disabled: props.disabled,
     onClick: function onClick() {
       setIsOpen(true);
-      markAsViewed();
+      if (!isViewed) {
+        markAsViewed();
+      }
     },
     color: "secondary"
   }, function () {
@@ -5992,7 +6067,6 @@ exports.AttachmentsTypesPropType = AttachmentsTypesPropType;
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-/* provided dependency */ var ReactDOM = __webpack_require__(/*! react-dom */ "react-dom");
 
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
@@ -6003,6 +6077,7 @@ exports.renderLayoutApp = exports.openPanel = exports.onConnect = exports.import
 var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
 var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ "../node_modules/@babel/runtime/regenerator/index.js"));
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "../node_modules/@babel/runtime/helpers/asyncToGenerator.js"));
+var _react2 = _interopRequireDefault(__webpack_require__(/*! elementor-utils/react */ "../assets/dev/js/utils/react.js"));
 var _previewContainer = __webpack_require__(/*! ./preview-container */ "../modules/ai/assets/js/editor/utils/preview-container.js");
 var _layoutApp = _interopRequireDefault(__webpack_require__(/*! ../layout-app */ "../modules/ai/assets/js/editor/layout-app.js"));
 var _screenshot = __webpack_require__(/*! ./screenshot */ "../modules/ai/assets/js/editor/utils/screenshot.js");
@@ -6080,97 +6155,98 @@ var renderLayoutApp = function renderLayoutApp() {
   var rootElement = document.createElement('div');
   document.body.append(rootElement);
   var bodyStyle = window.elementorFrontend.elements.$window[0].getComputedStyle(window.elementorFrontend.elements.$body[0]);
-  ReactDOM.render( /*#__PURE__*/_react.default.createElement(_layoutAppWrapper.default, {
-    isRTL: isRTL,
-    colorScheme: colorScheme
-  }, /*#__PURE__*/_react.default.createElement(_layoutApp.default, {
-    mode: options.mode,
-    currentContext: {
-      body: {
-        backgroundColor: bodyStyle.backgroundColor,
-        backgroundImage: bodyStyle.backgroundImage
-      }
-    },
-    attachmentsTypes: {
-      json: {
-        promptSuggestions: VARIATIONS_PROMPTS,
-        promptPlaceholder: PROMPT_PLACEHOLDER,
-        previewGenerator: function () {
-          var _previewGenerator = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(json) {
-            var screenshot;
-            return _regenerator.default.wrap(function _callee$(_context) {
-              while (1) switch (_context.prev = _context.next) {
-                case 0:
-                  _context.next = 2;
-                  return (0, _screenshot.takeScreenshot)(json);
-                case 2:
-                  screenshot = _context.sent;
-                  return _context.abrupt("return", "<img src=\"".concat(screenshot, "\" />"));
-                case 4:
-                case "end":
-                  return _context.stop();
-              }
-            }, _callee);
-          }));
-          function previewGenerator(_x) {
-            return _previewGenerator.apply(this, arguments);
-          }
-          return previewGenerator;
-        }()
+  var _ReactUtils$render = _react2.default.render( /*#__PURE__*/_react.default.createElement(_layoutAppWrapper.default, {
+      isRTL: isRTL,
+      colorScheme: colorScheme
+    }, /*#__PURE__*/_react.default.createElement(_layoutApp.default, {
+      mode: options.mode,
+      currentContext: {
+        body: {
+          backgroundColor: bodyStyle.backgroundColor,
+          backgroundImage: bodyStyle.backgroundImage
+        }
       },
-      url: {
-        promptPlaceholder: PROMPT_PLACEHOLDER,
-        promptSuggestions: VARIATIONS_PROMPTS
-      }
-    },
-    attachments: options.attachments || [],
-    onClose: function onClose() {
-      var _options$onClose;
-      previewContainer.destroy();
-      (_options$onClose = options.onClose) === null || _options$onClose === void 0 ? void 0 : _options$onClose.call(options);
-      ReactDOM.unmountComponentAtNode(rootElement);
-      rootElement.remove();
-      openPanel();
-    },
-    onConnect: onConnect,
-    onGenerate: function onGenerate() {
-      var _options$onGenerate;
-      (_options$onGenerate = options.onGenerate) === null || _options$onGenerate === void 0 ? void 0 : _options$onGenerate.call(options, {
-        previewContainer: previewContainer
-      });
-    },
-    onData: /*#__PURE__*/function () {
-      var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2(template) {
-        var screenshot;
-        return _regenerator.default.wrap(function _callee2$(_context2) {
-          while (1) switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.next = 2;
-              return (0, _screenshot.takeScreenshot)(template);
-            case 2:
-              screenshot = _context2.sent;
-              return _context2.abrupt("return", {
-                screenshot: screenshot,
-                template: template
-              });
-            case 4:
-            case "end":
-              return _context2.stop();
-          }
-        }, _callee2);
-      }));
-      return function (_x2) {
-        return _ref.apply(this, arguments);
-      };
-    }(),
-    onSelect: function onSelect(template) {
-      var _options$onSelect;
-      (_options$onSelect = options.onSelect) === null || _options$onSelect === void 0 ? void 0 : _options$onSelect.call(options);
-      previewContainer.setContent(template);
-    },
-    onInsert: options.onInsert,
-    hasPro: elementor.helpers.hasPro()
-  })), rootElement);
+      attachmentsTypes: {
+        json: {
+          promptSuggestions: VARIATIONS_PROMPTS,
+          promptPlaceholder: PROMPT_PLACEHOLDER,
+          previewGenerator: function () {
+            var _previewGenerator = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(json) {
+              var screenshot;
+              return _regenerator.default.wrap(function _callee$(_context) {
+                while (1) switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return (0, _screenshot.takeScreenshot)(json);
+                  case 2:
+                    screenshot = _context.sent;
+                    return _context.abrupt("return", "<img src=\"".concat(screenshot, "\" />"));
+                  case 4:
+                  case "end":
+                    return _context.stop();
+                }
+              }, _callee);
+            }));
+            function previewGenerator(_x) {
+              return _previewGenerator.apply(this, arguments);
+            }
+            return previewGenerator;
+          }()
+        },
+        url: {
+          promptPlaceholder: PROMPT_PLACEHOLDER,
+          promptSuggestions: VARIATIONS_PROMPTS
+        }
+      },
+      attachments: options.attachments || [],
+      onClose: function onClose() {
+        var _options$onClose;
+        previewContainer.destroy();
+        (_options$onClose = options.onClose) === null || _options$onClose === void 0 ? void 0 : _options$onClose.call(options);
+        unmount();
+        rootElement.remove();
+        openPanel();
+      },
+      onConnect: onConnect,
+      onGenerate: function onGenerate() {
+        var _options$onGenerate;
+        (_options$onGenerate = options.onGenerate) === null || _options$onGenerate === void 0 ? void 0 : _options$onGenerate.call(options, {
+          previewContainer: previewContainer
+        });
+      },
+      onData: /*#__PURE__*/function () {
+        var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2(template) {
+          var screenshot;
+          return _regenerator.default.wrap(function _callee2$(_context2) {
+            while (1) switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return (0, _screenshot.takeScreenshot)(template);
+              case 2:
+                screenshot = _context2.sent;
+                return _context2.abrupt("return", {
+                  screenshot: screenshot,
+                  template: template
+                });
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }, _callee2);
+        }));
+        return function (_x2) {
+          return _ref.apply(this, arguments);
+        };
+      }(),
+      onSelect: function onSelect(template) {
+        var _options$onSelect;
+        (_options$onSelect = options.onSelect) === null || _options$onSelect === void 0 ? void 0 : _options$onSelect.call(options);
+        previewContainer.setContent(template);
+      },
+      onInsert: options.onInsert,
+      hasPro: elementor.helpers.hasPro()
+    })), rootElement),
+    unmount = _ReactUtils$render.unmount;
   (_options$onRenderApp = options.onRenderApp) === null || _options$onRenderApp === void 0 ? void 0 : _options$onRenderApp.call(options, {
     previewContainer: previewContainer
   });
@@ -9088,6 +9164,39 @@ exports.typeOf = typeOf;
 
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ "../node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js");
+}
+
+
+/***/ }),
+
+/***/ "../node_modules/react-dom/client.js":
+/*!*******************************************!*\
+  !*** ../node_modules/react-dom/client.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var m = __webpack_require__(/*! react-dom */ "react-dom");
+if (false) {} else {
+  var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+  exports.createRoot = function(c, o) {
+    i.usingClientEntryPoint = true;
+    try {
+      return m.createRoot(c, o);
+    } finally {
+      i.usingClientEntryPoint = false;
+    }
+  };
+  exports.hydrateRoot = function(c, h, o) {
+    i.usingClientEntryPoint = true;
+    try {
+      return m.hydrateRoot(c, h, o);
+    } finally {
+      i.usingClientEntryPoint = false;
+    }
+  };
 }
 
 

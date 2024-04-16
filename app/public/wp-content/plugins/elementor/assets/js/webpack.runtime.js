@@ -1,4 +1,4 @@
-/*! elementor - v3.20.0 - 26-03-2024 */
+/*! elementor - v3.21.0 - 15-04-2024 */
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({});
@@ -131,7 +131,7 @@
 /******/ 			if (chunkId === "progress") return "" + chunkId + ".553d43a5b3903206bedc.bundle.js";
 /******/ 			if (chunkId === "tabs") return "tabs.520bc2ed4560c561029e.bundle.js";
 /******/ 			if (chunkId === "toggle") return "" + chunkId + ".d79746a764407a0828ee.bundle.js";
-/******/ 			if (chunkId === "video") return "" + chunkId + ".bb330f394f46f2666bc1.bundle.js";
+/******/ 			if (chunkId === "video") return "" + chunkId + ".57bb05ea17924bda3c02.bundle.js";
 /******/ 			if (chunkId === "image-carousel") return "" + chunkId + ".9399f19d95d7300cbc2e.bundle.js";
 /******/ 			if (chunkId === "text-editor") return "" + chunkId + ".2f2f7e0ea1e16387a004.bundle.js";
 /******/ 			if (chunkId === "wp-audio") return "" + chunkId + ".b8efdc046bc9df72a075.bundle.js";

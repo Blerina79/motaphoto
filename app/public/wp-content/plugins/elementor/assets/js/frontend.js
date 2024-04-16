@@ -1,4 +1,4 @@
-/*! elementor - v3.20.0 - 26-03-2024 */
+/*! elementor - v3.21.0 - 15-04-2024 */
 "use strict";
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["frontend"],{
 
@@ -1632,18 +1632,15 @@ class LightboxManager extends elementorModules.ViewModule {
     if (isColorPickingMode) {
       return;
     }
-    const lightbox = this.isOptimizedAssetsLoading() ? await LightboxManager.getLightbox() : elementorFrontend.utils.lightbox;
+    const lightbox = await LightboxManager.getLightbox();
     lightbox.createLightbox(element);
-  }
-  isOptimizedAssetsLoading() {
-    return elementorFrontend.config.experimentalFeatures.e_optimized_assets_loading;
   }
   bindEvents() {
     elementorFrontend.elements.$document.on('click', this.getSettings('selectors.links'), event => this.onLinkClick(event));
   }
   onInit() {
     super.onInit(...arguments);
-    if (!this.isOptimizedAssetsLoading() || elementorFrontend.isEditMode()) {
+    if (elementorFrontend.isEditMode()) {
       return;
     }
 
@@ -1689,9 +1686,6 @@ class Swiper {
     container.closest('.elementor-widget-wrap')?.classList.add('e-swiper-container');
     container.closest('.elementor-widget')?.classList.add('e-widget-swiper');
     return new Promise(resolve => {
-      if (!elementorFrontend.config.experimentalFeatures.e_optimized_assets_loading) {
-        return resolve(this.createSwiperInstance(container, this.config));
-      }
       elementorFrontend.utils.assetsLoader.load('script', 'swiper').then(() => resolve(this.createSwiperInstance(container, this.config)));
     });
   }

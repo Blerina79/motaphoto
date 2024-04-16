@@ -1,4 +1,4 @@
-/*! elementor - v3.20.0 - 26-03-2024 */
+/*! elementor - v3.21.0 - 15-04-2024 */
 .elementor-button,
 .e-btn,
 #elementor-deactivate-feedback-modal .dialog-skip,
@@ -2320,10 +2320,8 @@ fieldset:disabled a.e-button {
   max-width: 608px;
 }
 .e-feature-promotion_data h3 {
-  margin-block-start: 0;
-  margin-inline-end: 0;
+  margin: 0;
   margin-block-end: 33px;
-  margin-inline-start: 0;
   text-align: start;
   font-size: 1.85rem;
   font-weight: 300;

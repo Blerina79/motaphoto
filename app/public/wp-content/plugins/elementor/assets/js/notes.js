@@ -1,4 +1,4 @@
-/*! elementor - v3.20.0 - 26-03-2024 */
+/*! elementor - v3.21.0 - 15-04-2024 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -149,7 +149,7 @@ var NotesAddPanelMenuItem = /*#__PURE__*/function (_$e$modules$hookUI$Af) {
             },
             targetElement: this.$el,
             actionButton: {
-              url: hasProAndNotConnected ? elementorProEditorConfig.urls.connect : 'https://go.elementor.com/go-pro-notes/',
+              url: hasProAndNotConnected ? elementorProEditorConfig.urls.connect : elementor.config.promotions.notes.upgrade_url || 'https://go.elementor.com/go-pro-notes/',
               text: hasProAndNotConnected ? __('Connect & Activate', 'elementor') : __('Upgrade', 'elementor')
             }
           });

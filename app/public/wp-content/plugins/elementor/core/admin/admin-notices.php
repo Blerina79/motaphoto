@@ -4,6 +4,7 @@ namespace Elementor\Core\Admin;
 use Elementor\Api;
 use Elementor\Core\Admin\UI\Components\Button;
 use Elementor\Core\Base\Module;
+use Elementor\Core\Utils\Promotions\Filtered_Promotions_Manager;
 use Elementor\Plugin;
 use Elementor\Tracker;
 use Elementor\User;
@@ -331,6 +332,8 @@ class Admin_Notices extends Module {
 			],
 		];
 
+		$options = Filtered_Promotions_Manager::get_filtered_promotion_data( $options, 'core/admin/notice_role_manager_promote', 'button', 'url' );
+
 		$this->print_admin_notice( $options );
 
 		return true;
@@ -346,8 +349,7 @@ class Admin_Notices extends Module {
 		$experiments = Plugin::$instance->experiments;
 		$is_all_performance_features_active = (
 			$experiments->is_feature_active( 'additional_custom_breakpoints' ) &&
-			$experiments->is_feature_active( 'e_optimized_css_loading' ) &&
-			$experiments->is_feature_active( 'e_optimized_assets_loading' )
+			$experiments->is_feature_active( 'e_optimized_css_loading' )
 		);
 
 		if ( $is_all_performance_features_active ) {

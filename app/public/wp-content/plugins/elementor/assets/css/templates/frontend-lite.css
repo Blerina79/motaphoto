@@ -1771,10 +1771,10 @@ ul.elementor-icon-list-items.elementor-inline-items .elementor-inline-item {
 
 .e-con {
   --border-radius: 0;
-  --border-block-start-width: 0px;
-  --border-inline-end-width: 0px;
-  --border-block-end-width: 0px;
-  --border-inline-start-width: 0px;
+  --border-top-width: 0px;
+  --border-right-width: 0px;
+  --border-bottom-width: 0px;
+  --border-left-width: 0px;
   --border-style: initial;
   --border-color: initial;
   --container-widget-width: 100%;
@@ -1786,14 +1786,14 @@ ul.elementor-icon-list-items.elementor-inline-items .elementor-inline-item {
   --min-height: initial;
   --height: auto;
   --text-align: initial;
-  --margin-block-start: 0px;
-  --margin-inline-end: 0px;
-  --margin-block-end: 0px;
-  --margin-inline-start: 0px;
-  --padding-block-start: var(--container-default-padding-block-start, 10px);
-  --padding-inline-end: var(--container-default-padding-inline-end, 10px);
-  --padding-block-end: var(--container-default-padding-block-end, 10px);
-  --padding-inline-start: var(--container-default-padding-inline-start, 10px);
+  --margin-top: 0px;
+  --margin-right: 0px;
+  --margin-bottom: 0px;
+  --margin-left: 0px;
+  --padding-top: var(--container-default-padding-top, 10px);
+  --padding-right: var(--container-default-padding-right, 10px);
+  --padding-bottom: var(--container-default-padding-bottom, 10px);
+  --padding-left: var(--container-default-padding-left, 10px);
   --position: relative;
   --z-index: revert;
   --overflow: visible;
@@ -1809,15 +1809,37 @@ ul.elementor-icon-list-items.elementor-inline-items .elementor-inline-item {
   min-height: var(--min-height);
   height: var(--height);
   border-radius: var(--border-radius);
-  margin-block-start: var(--bc-margin-block-start, var(--margin-block-start));
-  margin-inline-end: var(--bc-margin-inline-end, var(--margin-inline-end));
-  margin-block-end: var(--bc-margin-block-end, var(--margin-block-end));
-  margin-inline-start: var(--bc-margin-inline-start, var(--margin-inline-start));
-  padding-inline-start: var(--bc-padding-inline-start, var(--padding-inline-start));
-  padding-inline-end: var(--bc-padding-inline-end, var(--padding-inline-end));
   z-index: var(--z-index);
   overflow: var(--overflow);
   transition: background var(--background-transition, 0.3s), border var(--border-transition, 0.3s), box-shadow var(--border-transition, 0.3s), transform var(--e-con-transform-transition-duration, 0.4s);
+  margin-block-start: var(--margin-block-start);
+  margin-inline-end: var(--margin-inline-end);
+  margin-block-end: var(--margin-block-end);
+  margin-inline-start: var(--margin-inline-start);
+  padding-inline-start: var(--padding-inline-start);
+  padding-inline-end: var(--padding-inline-end);
+}
+.e-con {
+  --margin-block-start: var(--margin-top);
+  --margin-block-end: var(--margin-bottom);
+  --margin-inline-start: var(--margin-left);
+  --margin-inline-end: var(--margin-right);
+  --padding-inline-start: var(--padding-left);
+  --padding-inline-end: var(--padding-right);
+  --padding-block-start: var(--padding-top);
+  --padding-block-end: var(--padding-bottom);
+  --border-block-start-width: var(--border-top-width);
+  --border-block-end-width: var(--border-bottom-width);
+  --border-inline-start-width: var(--border-left-width);
+  --border-inline-end-width: var(--border-right-width);
+}
+body.rtl .e-con {
+  --padding-inline-start: var(--padding-right);
+  --padding-inline-end: var(--padding-left);
+  --margin-inline-start: var(--margin-right);
+  --margin-inline-end: var(--margin-left);
+  --border-inline-start-width: var(--border-right-width);
+  --border-inline-end-width: var(--border-left-width);
 }
 .e-con.e-flex {
   --flex-direction: column;
@@ -1828,8 +1850,8 @@ ul.elementor-icon-list-items.elementor-inline-items .elementor-inline-item {
 }
 .e-con-full, .e-con > .e-con-inner {
   text-align: var(--text-align);
-  padding-block-start: var(--bc-padding-block-start, var(--padding-block-start));
-  padding-block-end: var(--bc-padding-block-end, var(--padding-block-end));
+  padding-block-start: var(--padding-block-start);
+  padding-block-end: var(--padding-block-end);
 }
 .e-con-full.e-flex, .e-con.e-flex > .e-con-inner {
   flex-direction: var(--flex-direction);
@@ -1891,8 +1913,8 @@ ul.elementor-icon-list-items.elementor-inline-items .elementor-inline-item {
   height: 100%;
 }
 :is(.elementor-section-wrap, [data-elementor-id]) > .e-con {
-  --margin-inline-end: auto;
-  --margin-inline-start: auto;
+  --margin-left: auto;
+  --margin-right: auto;
   max-width: min(100%, var(--width));
 }
 .e-con .elementor-widget.elementor-widget {
@@ -1914,10 +1936,10 @@ ul.elementor-icon-list-items.elementor-inline-items .elementor-inline-item {
   border-inline-end-width: var(--border-inline-end-width);
   border-block-end-width: var(--border-block-end-width);
   border-inline-start-width: var(--border-inline-start-width);
-  top: calc(0px - var(--border-block-start-width));
-  left: calc(0px - var(--border-inline-start-width));
-  width: max(100% + var(--border-inline-end-width) + var(--border-inline-start-width), 100%);
-  height: max(100% + var(--border-block-start-width) + var(--border-block-end-width), 100%);
+  top: calc(0px - var(--border-top-width));
+  left: calc(0px - var(--border-left-width));
+  width: max(100% + var(--border-left-width) + var(--border-right-width), 100%);
+  height: max(100% + var(--border-top-width) + var(--border-bottom-width), 100%);
 }
 .e-con::before {
   transition: background var(--overlay-transition, 0.3s), border-radius var(--border-transition, 0.3s), opacity var(--overlay-transition, 0.3s);
@@ -1930,10 +1952,10 @@ ul.elementor-icon-list-items.elementor-inline-items .elementor-inline-item {
   border-inline-end-width: var(--border-inline-end-width);
   border-block-end-width: var(--border-block-end-width);
   border-inline-start-width: var(--border-inline-start-width);
-  top: calc(0px - var(--border-block-start-width));
-  left: calc(0px - var(--border-inline-start-width));
-  width: max(100% + var(--border-inline-end-width) + var(--border-inline-start-width), 100%);
-  height: max(100% + var(--border-block-start-width) + var(--border-block-end-width), 100%);
+  top: calc(0px - var(--border-top-width));
+  left: calc(0px - var(--border-left-width));
+  width: max(100% + var(--border-left-width) + var(--border-right-width), 100%);
+  height: max(100% + var(--border-top-width) + var(--border-bottom-width), 100%);
 }
 @media (max-width: ELEMENTOR_SCREEN_MOBILE_MAX) {
   :is(.e-con, .e-con > .e-con-inner) > .elementor-background-video-container.elementor-hidden-phone {
@@ -1968,23 +1990,6 @@ ul.elementor-icon-list-items.elementor-inline-items .elementor-inline-item {
     --flex-wrap: wrap;
   }
 }
-.e-con {
-  --bc-margin-block-start: var(--margin-top);
-  --bc-margin-block-end: var(--margin-bottom);
-  --bc-margin-inline-start: var(--margin-left);
-  --bc-margin-inline-end: var(--margin-right);
-  --bc-padding-block-start: var(--padding-top);
-  --bc-padding-block-end: var(--padding-bottom);
-  --bc-padding-inline-start: var(--padding-left);
-  --bc-padding-inline-end: var(--padding-right);
-}
-[dir=rtl] .e-con {
-  --bc-margin-inline-start: var(--margin-right);
-  --bc-margin-inline-end: var(--margin-left);
-  --bc-padding-inline-start: var(--padding-right);
-  --bc-padding-inline-end: var(--padding-left);
-}
-
 .elementor-form-fields-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -2058,7 +2063,7 @@ ul.elementor-icon-list-items.elementor-inline-items .elementor-inline-item {
   letter-spacing: inherit;
   line-height: inherit;
   flex-basis: 100%;
-  padding-right: 20px;
+  padding-inline-end: 20px;
 }
 .elementor-field-group .elementor-select-wrapper:before {
   content: "\e92a";
@@ -2083,7 +2088,7 @@ ul.elementor-icon-list-items.elementor-inline-items .elementor-inline-item {
   display: inline-block;
 }
 .elementor-field-subgroup.elementor-subgroup-inline .elementor-field-option {
-  padding-right: 10px;
+  padding-inline-end: 10px;
 }
 .elementor-field-subgroup:not(.elementor-subgroup-inline) .elementor-field-option {
   flex-basis: 100%;
@@ -2104,7 +2109,7 @@ ul.elementor-icon-list-items.elementor-inline-items .elementor-inline-item {
 .elementor-mark-required .elementor-field-label:after {
   content: "*";
   color: red;
-  padding-left: 0.2em;
+  padding-inline-start: 0.2em;
 }
 
 .elementor-field-textual {
@@ -2257,7 +2262,7 @@ ul.elementor-icon-list-items.elementor-inline-items .elementor-inline-item {
   font-weight: normal;
   font-style: normal;
   vertical-align: middle;
-  margin-right: 5px;
+  margin-inline-end: 5px;
 }
 .elementor-message.elementor-message-danger {
   color: #d9534f;
@@ -2862,8 +2867,8 @@ ul.elementor-icon-list-items.elementor-inline-items .elementor-inline-item {
   display: flex;
   flex-direction: row-reverse;
   font-size: var(--lightbox-header-icons-size);
-  padding-left: 1em;
-  padding-right: 2.6em;
+  padding-inline-start: 1em;
+  padding-inline-end: 2.6em;
   top: 0;
   align-items: center;
   z-index: 10;
@@ -2890,7 +2895,7 @@ ul.elementor-icon-list-items.elementor-inline-items .elementor-inline-item {
   fill: var(--lightbox-ui-color-hover);
 }
 .elementor-slideshow__header .elementor-slideshow__counter {
-  margin-right: auto;
+  margin-inline-end: auto;
 }
 .elementor-slideshow__header .elementor-icon-share {
   z-index: 5;
@@ -2922,7 +2927,7 @@ ul.elementor-icon-list-items.elementor-inline-items .elementor-inline-item {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 .elementor-slideshow__share-links a {
-  text-align: left;
+  text-align: start;
   color: #3f444b;
   font-size: 12px;
   line-height: 2.5;
@@ -2935,7 +2940,7 @@ ul.elementor-icon-list-items.elementor-inline-items .elementor-inline-item {
 }
 .elementor-slideshow__share-links a i,
 .elementor-slideshow__share-links a svg {
-  margin-right: 0.75em;
+  margin-inline-end: 0.75em;
 }
 .elementor-slideshow__share-links a i {
   font-size: 1.25em;
@@ -3272,7 +3277,7 @@ ul.elementor-icon-list-items.elementor-inline-items .elementor-inline-item {
 
 .elementor-widget-text-path {
   font-size: 20px;
-  text-align: var(--alignment, left);
+  text-align: var(--alignment, start);
 }
 .elementor-widget-text-path svg {
   width: var(--width);
@@ -3346,10 +3351,10 @@ ul.elementor-icon-list-items.elementor-inline-items .elementor-inline-item {
   --n-tabs-title-flex-basis: content;
   --n-tabs-title-flex-shrink: initial;
   --n-tabs-title-order: initial;
-  --n-tabs-title-padding-block-start: var(--n-tabs-default-padding-block);
-  --n-tabs-title-padding-inline-end: var(--n-tabs-default-padding-inline);
-  --n-tabs-title-padding-block-end: var(--n-tabs-default-padding-block);
-  --n-tabs-title-padding-inline-start: var(--n-tabs-default-padding-inline);
+  --n-tabs-title-padding-top: var(--n-tabs-default-padding-block);
+  --n-tabs-title-padding-bottom: var(--n-tabs-default-padding-block);
+  --n-tabs-title-padding-left: var(--n-tabs-default-padding-inline);
+  --n-tabs-title-padding-right: var(--n-tabs-default-padding-inline);
   --n-tabs-title-border-radius: initial;
   --n-tabs-title-transition: 0.3s;
   --n-tabs-icon-color: var(--e-global-color-secondary, var(--n-tabs-color-secondary-fallback));
@@ -3358,6 +3363,16 @@ ul.elementor-icon-list-items.elementor-inline-items .elementor-inline-item {
   --n-tabs-icon-gap: 5px;
   width: 100%;
   max-width: 100%; /* Fix issue with new created n-tabs inside n-tabs with overflow */
+}
+.elementor-widget-n-tabs {
+  --n-tabs-title-padding-inline-start: var(--n-tabs-title-padding-left);
+  --n-tabs-title-padding-inline-end: var(--n-tabs-title-padding-right);
+  --n-tabs-title-padding-block-start: var(--n-tabs-title-padding-top);
+  --n-tabs-title-padding-block-end: var(--n-tabs-title-padding-bottom);
+}
+body.rtl .elementor-widget-n-tabs {
+  --n-tabs-title-padding-inline-start: var(--n-tabs-title-padding-right);
+  --n-tabs-title-padding-inline-end: var(--n-tabs-title-padding-left);
 }
 .elementor-widget-n-tabs .e-n-tabs {
   display: var(--n-tabs-display);

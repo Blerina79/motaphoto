@@ -1,4 +1,4 @@
-/*! elementor - v3.20.0 - 26-03-2024 */
+/*! elementor - v3.21.0 - 15-04-2024 */
 .dialog-widget-content {
   background-color: var(--e-a-bg-default);
   position: absolute;
@@ -332,8 +332,8 @@
   --e-a-color-info:	#2563EB;
   --e-a-color-warning:	#F59E0B;
   --e-a-color-accent:	#93003f;
-  --e-a-color-accent-promotion:	#93003f;
   --e-a-color-global:	#1DDDBF;
+  --e-a-color-accent-promotion:	#93003f;
   --e-a-bg-default:	#ffffff;
   --e-a-bg-invert:	#0C0D0E;
   --e-a-bg-hover:	#F1F2F3;
@@ -707,7 +707,7 @@
   left: 20px;
   background-color: var(--e-a-border-color);
 }
-.elementor-control.elementor-control-separator-after + .elementor-control-type-tabs ~ .elementor-control-separator-default, .elementor-control.elementor-control-separator-after:not(.elementor-hidden-control) ~ .elementor-control-separator-default {
+.elementor-control.elementor-control-separator-after + .elementor-control-type-tabs + .elementor-control-separator-default, .elementor-control.elementor-control-separator-after:not(.elementor-hidden-control) + .elementor-control-separator-default {
   padding-block-start: 15px;
 }
 .elementor-control.elementor-control-deprecated {

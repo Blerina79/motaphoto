@@ -1,4 +1,4 @@
-/*! elementor - v3.20.0 - 26-03-2024 */
+/*! elementor - v3.21.0 - 15-04-2024 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -5837,7 +5837,7 @@ var _siteParts = _interopRequireDefault(__webpack_require__(/*! ../organisms/sit
 var _text = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/atoms/text */ "../app/assets/js/ui/atoms/text.js"));
 __webpack_require__(/*! ./promotion.scss */ "../app/modules/site-editor/assets/js/pages/promotion.scss");
 function Promotion() {
-  var promotionUrl = 'https://go.elementor.com/go-pro-theme-builder/',
+  var promotionUrl = elementorAppConfig.promotion.upgrade_url || 'https://go.elementor.com/go-pro-theme-builder/',
     PromotionHoverElement = function PromotionHoverElement(props) {
       var promotionUrlWithType = "".concat(promotionUrl, "?type=").concat(props.type);
       return /*#__PURE__*/_react.default.createElement(_cardOverlay.default, {

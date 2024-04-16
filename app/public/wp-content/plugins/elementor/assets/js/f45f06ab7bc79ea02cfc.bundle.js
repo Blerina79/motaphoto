@@ -1,4 +1,4 @@
-/*! elementor - v3.20.0 - 26-03-2024 */
+/*! elementor - v3.21.0 - 15-04-2024 */
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["vendors-node_modules_styled-components_dist_styled-components_browser_esm_js-node_modules_bab-0097ba"],{
 
 /***/ "../node_modules/@emotion/is-prop-valid/dist/emotion-is-prop-valid.esm.js":

@@ -1,4 +1,4 @@
-/*! elementor - v3.20.0 - 26-03-2024 */
+/*! elementor - v3.21.0 - 15-04-2024 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -2327,7 +2327,8 @@ var App = function App() {
     text: promotionWidgets.length ? managerPermissions.pro.text : managerPermissions.advanced.text
   })))))), /*#__PURE__*/_react.default.createElement("tbody", null, sortedAndFilteredWidgets.map(function (widget) {
     return /*#__PURE__*/_react.default.createElement("tr", {
-      key: widget.name
+      key: widget.name,
+      "data-key-id": widget.name
     }, /*#__PURE__*/_react.default.createElement("td", null, /*#__PURE__*/_react.default.createElement("i", {
       style: {
         marginInlineEnd: '5px',
