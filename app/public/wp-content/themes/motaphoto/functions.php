@@ -7,8 +7,8 @@ function theme_enqueue_styles()
     // Ajoute la feuille de style "theme.css" au thème
     wp_enqueue_style(
         'theme-style',
-        get_stylesheet_directory_uri() . '/css/theme.css',
+        get_stylesheet_directory_uri() . 'assets/scss/index.css',
         array(),
-        filemtime(get_stylesheet_directory() . '/css/theme.css')
+        filemtime(get_stylesheet_directory() . 'assets/scss/index.css')
     );
 }
