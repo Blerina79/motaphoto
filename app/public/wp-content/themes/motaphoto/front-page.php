@@ -17,7 +17,7 @@ if (!empty($random_images)) {
 ?>
 <div class="hero" style="background-image: url('<?php echo esc_url($hero_image_url); ?>');">
     <!-- Contenu du hero ici, par exemple un titre ou un CTA -->
-                  <h1>PHOTOGRAPHE EVENT</h1>
+                  <h1>PHOTOGRAPHE  EVENT</h1>
 </div>
 <?php
 // Section de liste de photos

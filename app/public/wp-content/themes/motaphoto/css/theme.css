@@ -49,6 +49,15 @@
 
 
 
+h1{
+    font-size: 96px !important;
+    font-style: italic;
+    font-weight: 700;
+}
+
+
+/**** hero ****/
+
 .hero {
    
     height: 900px; 
@@ -64,13 +73,6 @@
     margin-right: auto;
 }
 
-h1{
-    font-size: 96px !important;
-    font-style: italic;
-    font-weight: 700;
-}
-
-
 .hero h1 {
     color: transparent;
     background: none;
@@ -79,4 +81,13 @@ h1{
     display: flex;
     justify-content: space-around;
     padding-top: 27%;
+}
+
+
+
+/**** footer ****/
+
+
+footer .footer-inner .site-navigation a:hover {
+    font-weight: 700;
 }
