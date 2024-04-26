@@ -83,6 +83,82 @@ h1{
     padding-top: 27%;
 }
 
+.entry-title{
+    font-size: 80px;
+    text-transform: uppercase;
+    font-family: 'space mono', sans-serif;
+    font-style: italic;
+}
+
+#content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.photo-single{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-top: -20px;
+}
+
+.photo-navigation{
+    text-align: end;
+}
+
+.left-side{
+    width: 48%;
+    margin-top: 44.5%; 
+}
+
+.right-side{
+    width: 48%;
+}
+
+.line{
+    border-top: 1px solid black;
+    margin-bottom: 10%;
+}
+
+
+.button{
+    background-color: #C4C4C4;
+    text-decoration: none;
+    display: inline-block; 
+    padding: 15px 100px;
+
+}
+
+.arrow-btn{
+   border: none; 
+   color: black;
+   font-weight: 400;
+   margin-right: -8.5px;
+   margin-top: -10px;
+
+   font-size: 15px;
+}
+
+.arrow-btn:hover{
+ background-color: transparent;
+ color: black;
+ font-weight: bold;
+
+}
+
+.photo-thumbnail{
+    width: 80px;
+    height: 80px;
+    margin-left: 85.4%;
+}
+
+.line-down{
+    width: 75.5%;
+    border-top: 1px solid black;
+    margin-top: -5px;
+}
 
 
 /**** footer ****/
