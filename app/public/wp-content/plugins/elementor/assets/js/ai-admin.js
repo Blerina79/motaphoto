@@ -1,4 +1,4 @@
-/*! elementor - v3.21.0 - 18-04-2024 */
+/*! elementor - v3.21.0 - 25-04-2024 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -885,6 +885,10 @@ var PromptErrorMessage = function PromptErrorMessage(_ref) {
         description: (0, _i18n.__)('Try exiting Elementor and sign in again.', 'elementor'),
         buttonText: (0, _i18n.__)('Reconnect', 'elementor'),
         buttonAction: onRetry
+      },
+      file_too_large: {
+        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('The file is too large.', 'elementor')),
+        description: (0, _i18n.__)('Please upload a file that is less than 4MB.', 'elementor')
       }
     };
     return messages[errMsg] || messages.default;
@@ -3156,7 +3160,17 @@ var VoicePromotionAlert = function VoicePromotionAlert(props) {
       }
     }),
     onClose: markAsViewed
-  }, __('Get improved results from AI by adding some personal context. Go to Site Settings > AI Context to get started.')));
+  }, __('Get improved results from AI by adding personal context.', 'elementor'), /*#__PURE__*/_react.default.createElement(_ui.Link, {
+    onClick: function onClick() {
+      return $e.route('panel/global/menu');
+    },
+    className: "elementor-clickable",
+    style: {
+      textDecoration: 'none'
+    },
+    color: "info.main",
+    href: "#"
+  }, __('Let’s do it', 'elementor'))));
 };
 exports.VoicePromotionAlert = VoicePromotionAlert;
 VoicePromotionAlert.propTypes = {

@@ -1,4 +1,4 @@
-/*! elementor - v3.21.0 - 18-04-2024 */
+/*! elementor - v3.21.0 - 25-04-2024 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -364,10 +364,12 @@ var AiBehavior = /*#__PURE__*/function (_Marionette$Behavior) {
         }
         var rootElement = document.createElement('div');
         document.body.append(rootElement);
+        var mainActionText = isPromotion ? (0, _i18n.__)('Try it for free', 'elementor') : (0, _i18n.__)('Try it now', 'elementor');
         var _ReactUtils$render2 = _react2.default.render( /*#__PURE__*/_react.default.createElement(_aiPromotionInfotipWrapper.default, {
             anchor: $button[0],
             header: promotionTexts.header,
             contentText: promotionTexts.contentText,
+            mainActionText: mainActionText,
             controlType: controlType,
             unmountAction: function unmountAction() {
               unmount();
@@ -675,13 +677,14 @@ var AiPromotionInfotipContent = function AiPromotionInfotipContent(props) {
       return props.onClick();
     },
     variant: "contained"
-  }, (0, _i18n.__)('Try it now', 'elementor'))));
+  }, props.mainActionText)));
 };
 AiPromotionInfotipContent.propTypes = {
   header: PropTypes.string,
   contentText: PropTypes.string,
   onClick: PropTypes.func,
-  onClose: PropTypes.func
+  onClose: PropTypes.func,
+  mainActionText: PropTypes.string
 };
 var _default = AiPromotionInfotipContent;
 exports["default"] = _default;
@@ -719,7 +722,8 @@ var AiPromotionInfotipWrapper = function AiPromotionInfotipWrapper(_ref) {
     isRTL = _ref.isRTL,
     clickAction = _ref.clickAction,
     placement = _ref.placement,
-    offset = _ref.offset;
+    offset = _ref.offset,
+    mainActionText = _ref.mainActionText;
   var focusOutListener = (0, _focusOutListener.useFocusOutListener)();
   var _useIntroduction = (0, _useIntroduction2.default)("ai_promotion_introduction_".concat(controlType)),
     isViewed = _useIntroduction.isViewed,
@@ -745,6 +749,7 @@ var AiPromotionInfotipWrapper = function AiPromotionInfotipWrapper(_ref) {
       focusOutListener: focusOutListener,
       header: header,
       contentText: contentText,
+      mainActionText: mainActionText,
       onClose: function onClose() {
         markAsViewed();
         focusOutListener.remove();
@@ -773,7 +778,8 @@ AiPromotionInfotipWrapper.propTypes = {
   isRTL: PropTypes.bool,
   clickAction: PropTypes.func,
   placement: PropTypes.string,
-  offset: PropTypes.object
+  offset: PropTypes.object,
+  mainActionText: PropTypes.string
 };
 var _default = AiPromotionInfotipWrapper;
 exports["default"] = _default;
@@ -1418,6 +1424,10 @@ var PromptErrorMessage = function PromptErrorMessage(_ref) {
         description: (0, _i18n.__)('Try exiting Elementor and sign in again.', 'elementor'),
         buttonText: (0, _i18n.__)('Reconnect', 'elementor'),
         buttonAction: onRetry
+      },
+      file_too_large: {
+        text: /*#__PURE__*/_react.default.createElement(_ui.AlertTitle, null, (0, _i18n.__)('The file is too large.', 'elementor')),
+        description: (0, _i18n.__)('Please upload a file that is less than 4MB.', 'elementor')
       }
     };
     return messages[errMsg] || messages.default;
@@ -3689,7 +3699,17 @@ var VoicePromotionAlert = function VoicePromotionAlert(props) {
       }
     }),
     onClose: markAsViewed
-  }, __('Get improved results from AI by adding some personal context. Go to Site Settings > AI Context to get started.')));
+  }, __('Get improved results from AI by adding personal context.', 'elementor'), /*#__PURE__*/_react.default.createElement(_ui.Link, {
+    onClick: function onClick() {
+      return $e.route('panel/global/menu');
+    },
+    className: "elementor-clickable",
+    style: {
+      textDecoration: 'none'
+    },
+    color: "info.main",
+    href: "#"
+  }, __('Let’s do it', 'elementor'))));
 };
 exports.VoicePromotionAlert = VoicePromotionAlert;
 VoicePromotionAlert.propTypes = {
@@ -5640,6 +5660,8 @@ var Module = /*#__PURE__*/function (_elementorModules$edi) {
         var _elementor, _elementor$getPrefere;
         var rootElement = document.createElement('div');
         document.body.append(rootElement);
+        var isPromotion = !window.ElementorAiConfig.is_get_started;
+        var mainActionText = isPromotion ? (0, _i18n.__)('Try it for free', 'elementor') : (0, _i18n.__)('Try it now', 'elementor');
         var _ReactUtils$render = _react2.default.render( /*#__PURE__*/_react.default.createElement(_aiPromotionInfotipWrapper.default, {
             "test-id": "ai-promotion-infotip-wrapper",
             anchor: element,
@@ -5648,6 +5670,7 @@ var Module = /*#__PURE__*/function (_elementorModules$edi) {
             },
             header: (0, _i18n.__)('Give your workflow a boost.', 'elementor'),
             contentText: (0, _i18n.__)('Build containers with AI and generate any layout you’d need for your site’s design.', 'elementor'),
+            mainActionText: mainActionText,
             controlType: 'container',
             unmountAction: function unmountAction() {
               unmount();

@@ -4,13 +4,17 @@
 * @package HelloElementor
 */
 get_header();
-if (have_posts()) : while (have_posts()) : the_post();
+//if (have_posts()) : while (have_posts()) : the_post();
         // Variables pour les champs personnalisés ACF
+
         $reference = get_field('reference');
-        $categorie = get_field('categorie');
-        $format = get_field('format');
         $type = get_field('type');
         $annee = get_field('annee');
+
+        $terms = get_queried_object();
+        
+        $categorie = get_field('categorie', $terms)->name;
+        $format = get_field('format', $terms)->name;
 ?>
         <main id="content" <?php post_class('site-main'); ?> >
             <div class="left-side">
@@ -30,7 +34,6 @@ if (have_posts()) : while (have_posts()) : the_post();
                 </div>
 
             </div>
-
             
             <div class="right-side">
                 <?php if (has_post_thumbnail()) : ?>
@@ -48,16 +51,18 @@ if (have_posts()) : while (have_posts()) : the_post();
 
                     <?php
                         $prev_post = get_previous_post();
+                        $next_post = get_next_post();
+                       
                         if (!empty($prev_post)) : ?>
                             <button class="arrow-btn" onclick="location.href='<?php echo get_permalink($prev_post->ID); ?>'">&#x2190;</button>
                     <?php endif; ?>
-                            <button class="arrow-btn" onclick="location.href='<?php echo get_next_post_link(); ?>'">&#x2192;</button>
+                            <button class="arrow-btn" onclick="location.href='<?php echo get_permalink($next_post->ID); ?>'">&#x2192;</button>
 
                 </div>
             </div>
         </main>
-<?php endwhile;
-endif; ?>
+<?php //endwhile;
+//endif; ?>
 
 <hr class="line-down"/>
 <?php get_footer(); ?>

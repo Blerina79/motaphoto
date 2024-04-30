@@ -19,12 +19,46 @@ if (!empty($random_images)) {
     <!-- Contenu du hero ici, par exemple un titre ou un CTA -->
                   <h1>PHOTOGRAPHE  EVENT</h1>
 </div>
+
+<div id="filtre-photo">
+    <select id="categorie-img" onchange="updatePhotoGallery();">
+        <option value="">Catégories</option>
+        <option value="">Concert</option>
+        <option value="">Mariage</option>
+        <option value="">Réception</option>
+        <option value="">Télévision</option>
+        <?php
+        $categories = get_terms(['taxonomy' => 'categories', 'hide_empty' => true]);
+        foreach ($categories as $category) {
+            echo '<option value="' . $category->term_id . '">' . $category->name . '</option>';
+        }
+        ?>
+    </select>
+    <select id="format" onchange="updatePhotoGallery();">
+        <option value="">Formats</option>
+        <option value="">Paysage</option>
+        <option value="">Portrait</option>
+        <?php
+        $formats = get_terms(['taxonomy' => 'format', 'hide_empty' => true]);
+        foreach ($formats as $format) {
+            echo '<option value="' . $format->term_id . '">' . $format->name . '</option>';
+        }
+        ?>
+    </select>
+    <select id="filtre-tri" onchange="updatePhotoGallery();">
+        <option value="trier">Trier par</option>
+        <option value="date">Date</option>
+        <option value="title">Titre</option>
+    </select>
+</div>
+
+
 <?php
 // Section de liste de photos
 // Initialisation de WP_Query pour récupérer et afficher les photos
 $photo_args = array(
     'post_type' => 'photo',
-    'posts_per_page' => 6 // Pour la pagination initiale ou le nombre de photos à afficher
+    'posts_per_page' => 8 // Pour la pagination initiale ou le nombre de photos à afficher
 );
 $photo_query = new WP_Query($photo_args);
 // Boucle sur les photos et affichage avec get_template_part
@@ -33,7 +67,7 @@ if ($photo_query->have_posts()) :
     while ($photo_query->have_posts()) : $photo_query->the_post();
         // On utilise get_template_part pour inclure le template de bloc de photo
         // Assurez-vous que vous avez un fichier nommé photo_block.php dans le répertoire de votre thème : /template-parts/photo_block.php
-        get_template_part('template-parts/photo_block', null, array('id' => get_the_ID()));
+        get_template_part('template_parts\photo_block', null, array('id' => get_the_ID()));
     endwhile;
     echo '</div>'; // Fin du container photos-list
 else :
@@ -43,6 +77,11 @@ wp_reset_postdata(); // Important pour réinitialiser la requête et les donnée
 // Container pour la pagination ou un bouton de chargement plus (AJAX par exemple)
 echo '<div id="pagination-container">';
 // Ici, vous ajouterez votre pagination ou le bouton de chargement plus
+
 echo '</div>';
+?>
+
+<button id="plus-photos" onclick="loadMorePhotos();">Charger plus</button>
+<?php
 get_footer();
 ?>
