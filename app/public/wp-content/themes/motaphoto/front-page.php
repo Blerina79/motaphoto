@@ -52,7 +52,7 @@ if (!empty($random_images)) {
     </select>
 </div>
 
-
+<div id="photo-gallery">
 <?php
 // Section de liste de photos
 // Initialisation de WP_Query pour récupérer et afficher les photos
@@ -60,28 +60,18 @@ $photo_args = array(
     'post_type' => 'photo',
     'posts_per_page' => 8 // Pour la pagination initiale ou le nombre de photos à afficher
 );
+
 $photo_query = new WP_Query($photo_args);
-// Boucle sur les photos et affichage avec get_template_part
-if ($photo_query->have_posts()) :
-    echo '<div class="photos-list">'; // Container pour les photos
-    while ($photo_query->have_posts()) : $photo_query->the_post();
-        // On utilise get_template_part pour inclure le template de bloc de photo
-        // Assurez-vous que vous avez un fichier nommé photo_block.php dans le répertoire de votre thème : /template-parts/photo_block.php
-        get_template_part('template_parts\photo_block', null, array('id' => get_the_ID()));
-    endwhile;
-    echo '</div>'; // Fin du container photos-list
-else :
-    echo "<p>Aucune photo à afficher.</p>"; // Message si aucun post trouvé
-endif;
-wp_reset_postdata(); // Important pour réinitialiser la requête et les données globales
-// Container pour la pagination ou un bouton de chargement plus (AJAX par exemple)
-echo '<div id="pagination-container">';
-// Ici, vous ajouterez votre pagination ou le bouton de chargement plus
-
-echo '</div>';
-?>
-
-<button id="plus-photos" onclick="loadMorePhotos();">Charger plus</button>
-<?php
-get_footer();
-?>
+    if ($photo_query->have_posts()) {
+        while ($photo_query->have_posts()) {
+            $photo_query->the_post();
+            get_template_part('template_parts/photo_block', null, ['id' => get_the_ID()]);
+        }
+    } else {
+        echo "<p>Aucune photo à afficher.</p>";
+    }
+    wp_reset_postdata();
+    ?>
+</div>
+<button id="load-more-photos" onclick="loadMorePhotos();">Charger plus</button>
+<?php get_footer(); ?>

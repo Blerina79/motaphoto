@@ -9,3 +9,4 @@ if (has_post_thumbnail($photo_id)) {
 } else {
     echo "<p>Image non disponible.</p>";
 }
+
