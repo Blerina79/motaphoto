@@ -40,33 +40,17 @@ jQuery(document).ready(function($) {
         });
     });
     // Gestion de l'ouverture et de la fermeture de la modale de contact.
-    $('.open-contact-modal').click(function(e) {
+    $('.open-contact-modal a').click(function(e) {
         e.preventDefault();
-        $('.contact-modal').fadeIn().css('display', 'flex');
+        $('#contact-form').fadeIn().css('display', 'flex');
     });
     $('.close-modal').click(function() {
-        $('.contact-modal').fadeOut();
+        $('#contact-form').fadeOut();
     });
-});
-// Gestion des interactions de la lightbox une fois que le DOM est entièrement chargé.
-document.addEventListener('DOMContentLoaded', function() {
-    // Ouverture de la lightbox au clic sur les images de la galerie.
-    document.querySelectorAll('.photo-block img').forEach(function(image) {
-        image.addEventListener('click', function() {
-            var container = document.querySelector('.containerLightbox');
-            var lightboxImg = document.querySelector('.lightboxImage');
-            container.style.display = 'flex';
-            lightboxImg.src = this.src;
-            document.querySelector('.lightboxTitle').textContent = this.alt;
-        });
-    });
-    // Fermeture de la lightbox.
-    document.querySelector('.lightbox__close').addEventListener('click', function() {
-        document.querySelector('.lightbox').style.display = 'none';
-    });
-});
-// Gestion de la pagination infinie et du chargement dynamique des termes de taxonomies pour les filtres.
-document.addEventListener('DOMContentLoaded', function() {
+
+    /*
+    $('#load-more-photos').on('click', loadPhotos);
+
     let page = 1;
     function loadPhotos() {
         $.ajax({
@@ -84,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    $('#load-more-photos').on('click', loadPhotos);
     loadPhotos(); // Charge initial des photos.
     // Chargement dynamique des termes de taxonomies pour les filtres.
     function loadTerms(taxonomy) {
@@ -106,4 +89,26 @@ document.addEventListener('DOMContentLoaded', function() {
         page = 1;
         loadPhotos(); // Recharger les photos selon les nouveaux filtres.
     });
+*/
+
+});
+// Gestion des interactions de la lightbox une fois que le DOM est entièrement chargé.
+document.addEventListener('DOMContentLoaded', function() {
+    // Ouverture de la lightbox au clic sur les images de la galerie.
+    document.querySelectorAll('.photo-block img').forEach(function(image) {
+        image.addEventListener('click', function() {
+            var container = document.querySelector('.containerLightbox');
+            var lightboxImg = document.querySelector('.lightboxImage');
+            container.style.display = 'flex';
+            lightboxImg.src = this.src;
+            document.querySelector('.lightboxTitle').textContent = this.alt;
+        });
+    });
+    // Fermeture de la lightbox.
+    document.querySelector('.lightbox__close').addEventListener('click', function() {
+        document.querySelector('.lightbox').style.display = 'none';
+    });
+
+
+    
 });

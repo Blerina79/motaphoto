@@ -58,7 +58,8 @@ if (!empty($random_images)) {
 // Initialisation de WP_Query pour récupérer et afficher les photos
 $photo_args = array(
     'post_type' => 'photo',
-    'posts_per_page' => 8 // Pour la pagination initiale ou le nombre de photos à afficher
+    'posts_per_page' => 8, // Pour la pagination initiale ou le nombre de photos à afficher
+    'order' => 'ASC'
 );
 
 $photo_query = new WP_Query($photo_args);
@@ -73,5 +74,5 @@ $photo_query = new WP_Query($photo_args);
     wp_reset_postdata();
     ?>
 </div>
-<button id="load-more-photos" onclick="loadMorePhotos();">Charger plus</button>
+<button id="load-more-photos" >Charger plus</button>
 <?php get_footer(); ?>

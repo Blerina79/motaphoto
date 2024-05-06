@@ -56,11 +56,22 @@ $format = get_field('format', $terms)->name; // Format de la photo
            
             if (!empty($prev_post)) : ?>
                 <button class="arrow-btn" onclick="location.href='<?php echo get_permalink($prev_post->ID); ?>'">&#x2190;</button> <!-- Bouton précédent -->
-            <?php endif; ?>
+            <?php endif; 
+            if (!empty($next_post)) : ?>
                 <button class="arrow-btn" onclick="location.href='<?php echo get_permalink($next_post->ID); ?>'">&#x2192;</button> <!-- Bouton suivant -->
+            <?php endif; ?>
 
         </div>
     </div>
+
+<!-- Modale de Contact Form 7 -->
+<div class="contact-modal" style="display:none;">
+    <div class="modal-content">
+        <?php echo do_shortcode('[contact-form-7 id="123" title="Contact form 1"]'); ?>
+        <button class="close-modal">Fermer</button>
+    </div>
+</div>
+
 </main>
 
 <hr class="line-down"/> <!-- Une autre ligne de séparation -->

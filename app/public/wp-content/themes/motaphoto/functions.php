@@ -76,6 +76,7 @@ function load_more_photos_ajax() {
         'post_type' => 'photo',
         'posts_per_page' => 8,
         'paged' => $page,
+        'order' => 'ASC'
     ];
     $query = new WP_Query($args);
     if ($query->have_posts()) {
