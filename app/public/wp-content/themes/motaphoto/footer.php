@@ -23,7 +23,7 @@
             <div class="lightbox-controls">
                 <button class="lightbox__prev">Précédente</button>
                 <span class="lightboxTitle">Nom de la photo</span>
-                <button class="ightbox__next">Suivante</button>
+                <button class="lightbox__next">Suivante</button>
             </div>
         </div>
     </div>

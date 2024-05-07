@@ -48,48 +48,6 @@ jQuery(document).ready(function($) {
         $('#contact-form').fadeOut();
     });
 
-    /*
-    $('#load-more-photos').on('click', loadPhotos);
-
-    let page = 1;
-    function loadPhotos() {
-        $.ajax({
-            url: '/wp-json/mytheme/v1/photos/?page=' + page,
-            type: 'GET',
-            success: function(data) {
-                if (data.length) {
-                    data.forEach(photo => {
-                        $('#photo-gallery').append(`<div><img src="${photo.url}" alt="${photo.title}" /></div>`);
-                    });
-                    page++;
-                } else {
-                    $('#load-more-photos').hide();
-                }
-            }
-        });
-    }
-    loadPhotos(); // Charge initial des photos.
-    // Chargement dynamique des termes de taxonomies pour les filtres.
-    function loadTerms(taxonomy) {
-        $.ajax({
-            url: '/wp-json/mytheme/v1/terms/?taxonomy=' + taxonomy,
-            type: 'GET',
-            success: function(terms) {
-                terms.forEach(term => {
-                    $(`#select-${taxonomy}`).append(`<option value="${term.term_id}">${term.name}</option>`);
-                });
-            }
-        });
-    }
-    loadTerms('categorie-img');
-    loadTerms('format');
-    // Réapplique les filtres et rafraîchit la galerie lorsque les options de filtrage changent.
-    $('.filtre-photo').on('change', function() {
-        $('#photo-gallery').empty();
-        page = 1;
-        loadPhotos(); // Recharger les photos selon les nouveaux filtres.
-    });
-*/
 
 });
 // Gestion des interactions de la lightbox une fois que le DOM est entièrement chargé.
