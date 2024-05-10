@@ -75,4 +75,26 @@ $format = get_field('format', $terms)->name; // Format de la photo
 </main>
 
 <hr class="line-down"/> <!-- Une autre ligne de séparation -->
+
+<h3>VOUS AIMEREZ AUSSI</h3>
+<div class="related-photos-container">
+    <?php
+    $photo_args = array(
+        'post_type' => 'photo',
+        'posts_per_page' => 2, // Adjust the number of photos as needed
+        'orderby' => 'rand', // Randomize photos
+        'post__not_in' => array(get_the_ID()) // Exclude current post
+    );
+    $photo_query = new WP_Query($photo_args);
+    if ($photo_query->have_posts()) {
+        while ($photo_query->have_posts()) {
+            $photo_query->the_post();
+            get_template_part('template_parts/photo_block', null, ['id' => get_the_ID()]);
+        }
+    } else {
+        echo "<p>Aucune photo supplémentaire à afficher.</p>";
+    }
+    wp_reset_postdata();
+    ?>
+</div>
 <?php get_footer(); ?> <!-- Inclut le fichier footer.php -->

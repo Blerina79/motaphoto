@@ -110,6 +110,8 @@ h1{
 #content{
     display: flex;
     justify-content: space-between;
+    position: relative;
+    min-height: 950px;
 }
 
 .photo-single{
@@ -132,6 +134,10 @@ h1{
 
 .right-side{
     width: 48%;
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    margin-top: 15%;
 }
 
 .line{
@@ -164,8 +170,9 @@ p {
    font-weight: 400;
    margin-right: -8.5px;
    margin-top: -10px;
-
    font-size: 15px;
+   background-color: transparent !important;
+
 }
 
 .arrow-btn:hover{
@@ -182,7 +189,7 @@ p {
 }
 
 .line-down{
-    width: 75.5%;
+    width: 66%;
     border-top: 1px solid black;
     margin-top: -5px;
 }
@@ -426,7 +433,7 @@ div.photo-main{
     border-radius: 5px;
     width: auto;
     max-width: 500px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ajoute une ombre pour mieux distinguer la modale */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     border: 3px solid black;
 }
 
@@ -493,6 +500,34 @@ div.photo-main{
     margin-left: 35%;
 }
 
+
+
+/**** single-photo- vous aimerez aussi  ****/
+
+
+
+.related-photos-container {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1150px;
+    margin-left: 17%;
+    margin-top: 30px;
+}
+.related-photos-container .photo-block {
+    flex: 1 1 48%;
+    margin: 10px;
+}
+
+
+h3{
+    font-family:'space mono'!important;
+    font-size: 20px;
+    margin-left: 18%;
+    margin-top: 3% !important;
+}
+
+
+
 /**** footer ****/
 
 
@@ -507,3 +542,8 @@ footer .footer-inner .site-navigation a:hover {
     justify-content:space-evenly;
     list-style: none;
 }
+
+
+
+
+
