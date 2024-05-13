@@ -105,6 +105,50 @@ h1{
     font-style: italic;
 }
 
+@media (max-width: 425px) {
+    .hero {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 35px !important;
+        padding-top: 250px;
+    }
+
+    #filtre-photo {
+        flex-direction: column !important;
+        align-items: flex-end;
+        gap: 15px;
+    }
+
+    #categorie-img{
+        margin-top: -20px;
+    }
+
+    #format {
+        align-items: center;
+    }
+
+    #filtre-tri {
+        align-items: center;
+    }
+
+    #photo-gallery {
+        grid-template-columns: 1fr !important; /* Passe à une seule colonne pour afficher les photos les unes sous les autres */
+        gap: 5px;
+        padding-top: 90px;
+    }
+
+    #load-more-photos {
+        margin-left: 35%;
+    }
+    
+
+}
+
+
+
+
 /***** single-page*****/
 
 #content{
@@ -159,6 +203,12 @@ p {
     margin-block-start: 0;
     margin-block-end: .9rem;
     margin-bottom: 30px !important;
+}
+
+@media (max-width: 425px) {
+    .site-header {
+        padding-inline-start: 30px !important;
+    }
 }
 
 
@@ -217,7 +267,7 @@ p {
     padding: 5px 10px;
     box-sizing: border-box; 
     border-radius: 10px;
-    margin-left:12%;
+    margin-left:4%;
 }   
 
 #format{
@@ -232,10 +282,9 @@ p {
 #filtre-tri{
     width: 250px;
     height: 40px;
-    padding: 5px 50px;
     box-sizing: border-box; 
     border-radius: 10px;
-    margin-right: 8%;        
+    margin-right: 0;        
 }
 
 #photo-gallery {
@@ -485,6 +534,7 @@ div.photo-main{
 [type=button], [type=submit], button {
     display: inline-block;
     font-weight: 400;
+    font-family: 'space mono';
     color: black !important;
     text-align: center;
     white-space: nowrap;
@@ -498,6 +548,10 @@ div.photo-main{
     border-radius: 3px;
     transition: all .3s;
     margin-left: 35%;
+}
+
+.wpcf7-form-control .wpcf7-textarea{
+
 }
 
 
@@ -526,6 +580,116 @@ h3{
     margin-top: 3% !important;
 }
 
+/**** Menu burger ****/
+
+button.nav-toggler {
+    background-color: transparent !important;
+    border: none !important;
+    background-color: transparent; /* Couleur de fond du bouton */
+    border: none;
+    cursor: pointer;
+    margin-right: 100px;
+    margin-top: -15px;
+}
+    
+
+/* Styles généraux */
+/*.site-navigation {
+    display: block; /* Visible au-dessus de 426px */
+/*}/*
+
+/* Styles du menu burger */
+.burger-menu-container {
+    display: none;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    cursor: pointer;
+    width: 35px; 
+    height: 50px; 
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+}
+
+.burger-menu-content {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: red;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 999;
+    height: calc(100vh - 60px);
+    overflow-y: auto; /* Permet le défilement dans le menu si nécessaire */
+}
+
+.burger-menu-content.active {
+    display: block;
+}
+
+@media (max-width: 425px) {
+    .site-navigation {
+        display: none !important;
+    }
+
+    .burger-menu-container {
+        display: block;
+    }
+
+    /*.burger-menu-content {
+        display: block; /* Assurez-vous que cette propriété est bien basculée par JavaScript */
+    /*}*/
+
+    .burger-menu-container {
+        display: flex;
+    }
+}
+
+.ligne {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: black;
+    transition: transform 0.3s ease-out;
+}
+
+.l1{
+    transform: translateY(-10px);
+ }
+
+ .l3{
+     transform: translateY(10px);
+ }
+
+.nav-toggler.active .l1 {
+    transform: translateY(0) rotate(135deg);
+}
+
+.nav-toggler.active .l3 {
+    transform: translateY(0) rotate(-135deg);
+}
+
+.nav-toggler.active .l2 {
+    opacity: 0;
+}
+
+/*button#burger {
+    display: none;
+    background-color: transparent; /* Couleur de fond du bouton */
+    /*color: red; /* Couleur du texte du bouton */
+    /*padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}*/
+
+ul.menu {
+    list-style: none;
+    text-align: center;
+}
 
 
 /**** footer ****/
@@ -542,8 +706,6 @@ footer .footer-inner .site-navigation a:hover {
     justify-content:space-evenly;
     list-style: none;
 }
-
-
 
 
 

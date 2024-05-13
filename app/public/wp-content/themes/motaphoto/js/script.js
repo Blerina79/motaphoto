@@ -39,6 +39,8 @@ jQuery(document).ready(function($) {
             }
         });
     });
+
+
     // Gestion de l'ouverture et de la fermeture de la modale de contact.
     $('.open-contact-modal a').click(function(e) {
         e.preventDefault();
@@ -50,6 +52,8 @@ jQuery(document).ready(function($) {
 
 
 });
+
+
 // Gestion des interactions de la lightbox une fois que le DOM est entièrement chargé.
 document.addEventListener('DOMContentLoaded', function() {
     // Ouverture de la lightbox au clic sur les images de la galerie.
@@ -69,4 +73,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     
+});
+
+
+  //gestion du menu burger//
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const navToggler = document.querySelector('.nav-toggler');
+    const menuContent = document.querySelector('.burger-menu-content');
+
+    navToggler.addEventListener('click', function() {
+        this.classList.toggle('active');
+        menuContent.classList.toggle('active'); // Utilisez 'active' au lieu de 'display'
+    });
+
+    // Cliquer à l'extérieur pour fermer le menu
+    document.addEventListener('click', function(event) {
+        if (!navToggler.contains(event.target) && !menuContent.contains(event.target)) {
+            navToggler.classList.remove('active');
+            menuContent.classList.remove('active');
+        }
+    });
 });

@@ -27,6 +27,26 @@
             ));
             ?>
         </nav>
+          <!--Menu burger -->
+       
+          <div class="burger-menu-container">
+            <button id="burger" aria-label="toggle curtain navigation" class="nav-toggler">
+                <span class="ligne l1"></span>
+                <span class="ligne l2"></span>
+                <span class="ligne l3"></span>
+            </button>
+            <div class="burger-menu-content">
+                <?php
+                wp_nav_menu(array(
+                    'theme_location' => 'menu-header',
+                    'menu_id'        => 'burger-menu',
+                    'container'      => false,
+                    'items_wrap'     => '<ul class="menu">%3$s</ul>',
+                ));
+                ?>
+            </div>
+        </div>
+
     </header>
     <?php wp_body_open(); ?> <!-- Hook WordPress pour ajouter du contenu spécifique juste après la balise body -->
 </body>
