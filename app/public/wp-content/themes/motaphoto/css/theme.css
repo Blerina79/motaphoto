@@ -550,15 +550,7 @@ div.photo-main{
     margin-left: 35%;
 }
 
-.wpcf7-form-control .wpcf7-textarea{
-
-}
-
-
-
 /**** single-photo- vous aimerez aussi  ****/
-
-
 
 .related-photos-container {
     display: flex;
@@ -594,15 +586,11 @@ button.nav-toggler {
     
 
 /* Styles généraux */
-/*.site-navigation {
-    display: block; /* Visible au-dessus de 426px */
-/*}/*
 
 /* Styles du menu burger */
 .burger-menu-container {
     display: none;
     position: fixed;
-    top: 10px;
     right: 10px;
     z-index: 1000;
     cursor: pointer;
@@ -616,14 +604,14 @@ button.nav-toggler {
 .burger-menu-content {
     display: none;
     position: fixed;
-    top: 60px;
+    top: 110px;
     left: 0;
     width: 100%;
     background-color: red;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     z-index: 999;
     height: calc(100vh - 60px);
-    overflow-y: auto; /* Permet le défilement dans le menu si nécessaire */
+    overflow-y: auto; 
 }
 
 .burger-menu-content.active {
@@ -636,15 +624,29 @@ button.nav-toggler {
     }
 
     .burger-menu-container {
-        display: block;
+        display: flex;
+        justify-content: flex-start;
+        margin-top: -15px;
+        margin-right: 10px;
+        position: relative;
     }
 
-    /*.burger-menu-content {
-        display: block; /* Assurez-vous que cette propriété est bien basculée par JavaScript */
-    /*}*/
+    ul.menu {
+        list-style: none;
+        text-align: center;
+        margin-top: 30px;
+    }
 
-    .burger-menu-container {
-        display: flex;
+    ul.menu li{
+        
+        margin: 10px 0;
+    }
+    
+    a {
+     font-family: 'space-mono';
+     text-align: center;
+     color: white !important;
+     
     }
 }
 
@@ -677,35 +679,58 @@ button.nav-toggler {
     opacity: 0;
 }
 
-/*button#burger {
-    display: none;
-    background-color: transparent; /* Couleur de fond du bouton */
-    /*color: red; /* Couleur du texte du bouton */
-    /*padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-}*/
 
-ul.menu {
-    list-style: none;
-    text-align: center;
+
+
+
+#load-more-photos {
+    margin-left: 35%;
 }
 
 
 /**** footer ****/
 
-
-
-
 footer .footer-inner .site-navigation a:hover {
     font-weight: 700;
-}
-
-.footer-navigation ul {
-    display: flex;
-    justify-content:space-evenly;
     list-style: none;
 }
 
 
+.footer-navigation ul a {
+    font-family: 'space-mono';
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    list-style: none;
+    color: black !important;
+    margin-top: 10px;
+    list-style: none !important;
+}
 
+#footer-menu{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+   }
+
+
+@media (max-width: 425px) {
+
+    #footer-menu {
+        padding: 0;
+       }
+
+    .footer-navigation li {
+        width: 100%;
+        text-align: center; 
+        margin-bottom: 10px; 
+        }
+
+    ul.menu {
+            flex-wrap: wrap;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+}

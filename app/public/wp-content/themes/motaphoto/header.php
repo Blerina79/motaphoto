@@ -30,11 +30,11 @@
           <!--Menu burger -->
        
           <div class="burger-menu-container">
-            <button id="burger" aria-label="toggle curtain navigation" class="nav-toggler">
+            <div id="burger" aria-label="toggle curtain navigation" class="nav-toggler">
                 <span class="ligne l1"></span>
                 <span class="ligne l2"></span>
                 <span class="ligne l3"></span>
-            </button>
+            </div>
             <div class="burger-menu-content">
                 <?php
                 wp_nav_menu(array(
