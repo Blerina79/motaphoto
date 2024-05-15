@@ -683,10 +683,6 @@ button.nav-toggler {
 
 
 
-#load-more-photos {
-    margin-left: 35%;
-    margin-top: 15px;
-}
 
 
 /**** footer ****/
@@ -718,20 +714,46 @@ footer .footer-inner .site-navigation a:hover {
 
 @media (max-width: 425px) {
 
+    hr {
+        margin-bottom: 40px;
+    }
+
     #footer-menu {
-        padding: 0;
+        margin-top: 10px;
        }
 
     .footer-navigation li {
         width: 100%;
         text-align: center; 
         margin-bottom: 10px; 
+        font-size: 20px;
+        line-height: 40px;
         }
 
     ul.menu {
-            flex-wrap: wrap;
-            margin-top: 30px;
-            text-align: center;
+        flex-wrap: wrap;
+        margin-top: 20vh;
+        text-align: center;
+        margin-right: 25px;
+        font-size: 44px;
+        line-height: 90px;
         }
+
+    ul.menu li {
+        margin: 10px 0;
+        }
+
+    #format {
+        margin-right: 0;
+        }  
+
+        
+#load-more-photos {
+    margin-left: 35%;
+    margin-top: 15px;
+}
+
+
+
 
 }

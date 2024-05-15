@@ -29,6 +29,28 @@ function filter_photos_ajax() {
         'orderby' => $sort ?: 'date',
         'order' => 'ASC'
     ];
+
+
+
+    if ($category) {
+        $args['tax_query'][] = [
+            'taxonomy' => 'categories',
+            'field' => 'term_id',
+            'terms' => $category
+        ];
+    }
+
+    if ($format) {
+        $args['tax_query'][] = [
+            'taxonomy' => 'format',
+            'field' => 'term_id',
+            'terms' => $format
+        ];
+    }
+
+
+
+
     $query = new WP_Query($args);
     if ($query->have_posts()) {
         ob_start();
