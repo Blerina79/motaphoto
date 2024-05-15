@@ -57,12 +57,13 @@ jQuery(document).ready(function($) {
 // Gestion des interactions de la lightbox une fois que le DOM est entièrement chargé.
 document.addEventListener('DOMContentLoaded', function() {
     // Ouverture de la lightbox au clic sur les images de la galerie.
-    document.querySelectorAll('.photo-block img').forEach(function(image) {
-        image.addEventListener('click', function() {
+    document.querySelectorAll('.photo-icon').forEach(function(image) {
+        image.addEventListener('click', function(e) {
+
             var container = document.querySelector('.containerLightbox');
             var lightboxImg = document.querySelector('.lightboxImage');
             container.style.display = 'flex';
-            lightboxImg.src = this.src;
+            lightboxImg.src = this.parentNode.querySelector('img').src;
             document.querySelector('.lightboxTitle').textContent = this.alt;
         });
     });
@@ -73,17 +74,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     
-});
-
-
   //gestion du menu burger//
 
-  document.addEventListener('DOMContentLoaded', function() {
     const navToggler = document.querySelector('.nav-toggler');
     const menuContent = document.querySelector('.burger-menu-content');
 
     navToggler.addEventListener('click', function() {
         this.classList.toggle('active');
+        const header = document.querySelector('header');
+        header.classList.toggle('fixed');
+
         menuContent.classList.toggle('active'); // Utilisez 'active' au lieu de 'display'
     });
 

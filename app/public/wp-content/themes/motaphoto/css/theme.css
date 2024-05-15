@@ -105,7 +105,7 @@ h1{
     font-style: italic;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 426px) {
     .hero {
         width: 100%;
     }
@@ -156,6 +156,7 @@ h1{
     justify-content: space-between;
     position: relative;
     min-height: 950px;
+    padding-top: -5%;
 }
 
 .photo-single{
@@ -205,7 +206,7 @@ p {
     margin-bottom: 30px !important;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 426px) {
     .site-header {
         padding-inline-start: 30px !important;
     }
@@ -610,15 +611,20 @@ button.nav-toggler {
     background-color: red;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     z-index: 999;
-    height: 77vh;
+    height: 100vh;
     overflow-y: auto; 
 }
 
+header.fixed{
+    position: fixed;
+    z-index: 50;
+    background: white;
+}
 .burger-menu-content.active {
     display: block;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 426px) {
     .site-navigation {
         display: none !important;
     }
@@ -712,7 +718,7 @@ footer .footer-inner .site-navigation a:hover {
    }
 
 
-@media (max-width: 425px) {
+@media (max-width: 426px) {
 
     hr {
         margin-bottom: 40px;
