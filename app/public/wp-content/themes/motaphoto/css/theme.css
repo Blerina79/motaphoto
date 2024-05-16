@@ -532,6 +532,17 @@ div.photo-main{
     margin-left: 30px;
 }*/
 
+
+label {
+    display: inline-block;
+    line-height: 1;
+    vertical-align: middle;
+    width: 80%;
+    align-items: center;
+    margin-left: 10%;
+}
+
+
 [type=button], [type=submit], button {
     display: inline-block;
     font-weight: 400;
@@ -550,6 +561,8 @@ div.photo-main{
     transition: all .3s;
     margin-left: 35%;
 }
+
+
 
 /**** single-photo- vous aimerez aussi  ****/
 
