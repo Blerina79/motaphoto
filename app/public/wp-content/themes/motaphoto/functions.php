@@ -24,7 +24,7 @@ function filter_photos_ajax() {
         'posts_per_page' => -1,
         'tax_query' => [
             ['taxonomy' => 'categories', 'field' => 'term_id', 'terms' => $category],
-            ['taxonomy' => 'format', 'field' => 'term_id', 'terms' => $format]
+            ['taxonomy' => 'custom_format', 'field' => 'term_id', 'terms' => $format]
         ],
         'orderby' => $sort ?: 'date',
         'order' => 'ASC'
@@ -42,7 +42,7 @@ function filter_photos_ajax() {
 
     if ($format) {
         $args['tax_query'][] = [
-            'taxonomy' => 'format',
+            'taxonomy' => 'custom_format',
             'field' => 'term_id',
             'terms' => $format
         ];
@@ -82,8 +82,8 @@ add_shortcode('contact_image', 'insert_contact_image');
  * Enregistre les taxonomies personnalisées pour les photos.
  */
 function register_photo_taxonomies() {
-    register_taxonomy('categorie-img', 'photo', ['label' => 'Catégories de Photos', 'rewrite' => ['slug' => 'categorie-img'], 'hierarchical' => true]);
-    register_taxonomy('format', 'photo', ['label' => 'Formats de Photos', 'rewrite' => ['slug' => 'format'], 'hierarchical' => true]);
+    register_taxonomy('categories', 'photo', ['label' => 'Catégories de Photos', 'rewrite' => ['slug' => 'categorie-img'], 'hierarchical' => true]);
+    register_taxonomy('custom_format', 'photo', ['label' => 'Formats de Photos', 'rewrite' => ['slug' => 'format'], 'hierarchical' => true]);
 }
 add_action('init', 'register_photo_taxonomies');
 

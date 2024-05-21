@@ -23,12 +23,8 @@ if (!empty($random_images)) {
 <div id="filtre-photo">
     <select id="categorie-img" onchange="updatePhotoGallery();">
         <option value="">Catégories</option>
-        <option value="">Concert</option>
-        <option value="">Mariage</option>
-        <option value="">Réception</option>
-        <option value="">Télévision</option>
         <?php
-        $categories = get_terms(['taxonomy' => 'categories', 'hide_empty' => true]);
+        $categories = get_terms(['taxonomy' => 'Catégories', 'hide_empty' => true]);
         foreach ($categories as $category) {
             echo '<option value="' . $category->term_id . '">' . $category->name . '</option>';
         }
@@ -36,10 +32,8 @@ if (!empty($random_images)) {
     </select>
     <select id="format" onchange="updatePhotoGallery();">
         <option value="">Formats</option>
-        <option value="">Paysage</option>
-        <option value="">Portrait</option>
         <?php
-        $formats = get_terms(['taxonomy' => 'format', 'hide_empty' => true]);
+        $formats = get_terms(['taxonomy' => 'Formats custom', 'hide_empty' => true]);
         foreach ($formats as $format) {
             echo '<option value="' . $format->term_id . '">' . $format->name . '</option>';
         }
