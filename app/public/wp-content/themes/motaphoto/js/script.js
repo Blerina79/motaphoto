@@ -9,16 +9,23 @@ jQuery(document).ready(function($) {
             url: ajax_object.ajaxurl,
             type: 'POST',
             data: {
-                action: 'filtre-tri',
+                action: 'filter_photos',
                 category: category,
                 format: format,
                 sort: sort
             },
             success: function(response) {
-                $('#photo-gallery').html(response.content);
+                if (response.success) {
+                    $('#photo-gallery').html(response.data.content);
+                } else {
+                    $('#photo-gallery').html('<p>Aucune photo trouvée.</p>');
+                }
             }
         });
     }
+
+    $('#categorie-img, #format, #filtre-tri').change(updatePhotoGallery);
+
     // Gestion du chargement de plus de photos avec pagination infinie.
     $('#load-more-photos').on('click', function() {
         var button = $(this);
@@ -40,42 +47,48 @@ jQuery(document).ready(function($) {
         });
     });
 
-
     // Gestion de l'ouverture et de la fermeture de la modale de contact.
     $('.open-contact-modal a').click(function(e) {
         e.preventDefault();
         $('#contact-form').fadeIn().css('display', 'flex');
     });
-    $('.close-modal').click(function() {
-        $('#contact-form').fadeOut();
+
+    $(document).mouseup(function(e) {
+        var modal = $("#contact-form .modal-content");
+        if (!modal.is(e.target) && modal.has(e.target).length === 0) {
+            $('#contact-form').fadeOut();
+        }
     });
 
-
-});
-
-
-// Gestion des interactions de la lightbox une fois que le DOM est entièrement chargé.
-document.addEventListener('DOMContentLoaded', function() {
-    // Ouverture de la lightbox au clic sur les images de la galerie.
-    document.querySelectorAll('.photo-icon').forEach(function(image) {
-        image.addEventListener('click', function(e) {
-
+    // Gestion des interactions de la lightbox une fois que le DOM est entièrement chargé.
+    document.querySelectorAll('.photo-block').forEach(function(block) {
+        block.addEventListener('click', function(e) {
+            e.preventDefault();
             var container = document.querySelector('.containerLightbox');
             var lightboxImg = document.querySelector('.lightboxImage');
+            var title = this.querySelector('.photo-title').textContent;
+            var category = this.querySelector('.photo-category').textContent;
+            var imgSrc = this.querySelector('img').src;
+
             container.style.display = 'flex';
-            lightboxImg.src = this.parentNode.querySelector('img').src;
-            document.querySelector('.lightboxTitle').textContent = this.alt;
+            lightboxImg.src = imgSrc;
+            document.querySelector('.lightboxTitle').textContent = title + ' - ' + category;
         });
     });
-    // Fermeture de la lightbox.
+
     document.querySelector('.lightbox__close').addEventListener('click', function() {
-        document.querySelector('.lightbox').style.display = 'none';
+        document.querySelector('.containerLightbox').style.display = 'none';
     });
 
+    document.querySelector('.lightbox__prev').addEventListener('click', function() {
+        // Gestion du précédent
+    });
 
-    
-  //gestion du menu burger//
+    document.querySelector('.lightbox__next').addEventListener('click', function() {
+        // Gestion du suivant
+    });
 
+    // Gestion du menu burger
     const navToggler = document.querySelector('.nav-toggler');
     const menuContent = document.querySelector('.burger-menu-content');
 
@@ -83,11 +96,9 @@ document.addEventListener('DOMContentLoaded', function() {
         this.classList.toggle('active');
         const header = document.querySelector('header');
         header.classList.toggle('fixed');
-
-        menuContent.classList.toggle('active'); // Utilisez 'active' au lieu de 'display'
+        menuContent.classList.toggle('active');
     });
 
-    // Cliquer à l'extérieur pour fermer le menu
     document.addEventListener('click', function(event) {
         if (!navToggler.contains(event.target) && !menuContent.contains(event.target)) {
             navToggler.classList.remove('active');
