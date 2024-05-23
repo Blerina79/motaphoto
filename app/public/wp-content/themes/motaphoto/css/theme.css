@@ -289,9 +289,21 @@ p {
 div.photo-main{
     width: 100%;
     object-fit: cover;
-    
-
 }
+
+@media (max-width: 426px){
+    #photo-gallery {
+        display: grid;
+        grid-template-columns: ( 1fr);
+        gap: 20px;
+        max-width: 1300px;
+        margin: 20px auto;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+
+
 
 /*.photo-block h3 {
     display: none; 
