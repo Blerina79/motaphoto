@@ -12,8 +12,8 @@ $type = get_field('type');
 $annee = get_field('annee');
 
 $terms = get_queried_object(); // Récupère l'objet de requête actuel
-$categorie = get_field('categorie', $terms)->name; // Nom de la catégorie associée à la photo
-$format = get_field('format', $terms)->name; // Format de la photo
+$categories = wp_get_post_terms(get_the_ID(), 'categories');
+$formats = wp_get_post_terms(get_the_ID(), 'format');
 
 ?>
 <main id="content" <?php post_class('site-main'); ?>>
@@ -21,8 +21,16 @@ $format = get_field('format', $terms)->name; // Format de la photo
         <header class="page-header">
             <?php the_title('<h2 class="entry-title">', '</h2>'); ?> <!-- Affiche le titre de la photo -->
             <p>Référence: <?php echo esc_html($reference); ?></p> <!-- Affiche la référence de la photo -->
-            <p>Catégorie: <?php echo esc_html($categorie); ?></p> <!-- Affiche la catégorie de la photo -->
-            <p>Format: <?php echo esc_html($format); ?></p> <!-- Affiche le format de la photo -->
+            <p>Catégories:
+    <?php foreach ($categories as $category) {
+        echo esc_html($category->name) . ' ';
+    } ?>
+</p>
+<p>Format:
+    <?php foreach ($formats as $format) {
+        echo esc_html($format->name) . ' ';
+    } ?>
+</p>
             <p>Type: <?php echo esc_html($type); ?></p> <!-- Affiche le type de la photo -->
             <p>Année: <?php echo esc_html($annee); ?></p> <!-- Affiche l'année de la photo -->
         </header>
@@ -98,3 +106,4 @@ $format = get_field('format', $terms)->name; // Format de la photo
     ?>
 </div>
 <?php get_footer(); ?> <!-- Inclut le fichier footer.php -->
+

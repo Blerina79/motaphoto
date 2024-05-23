@@ -24,18 +24,20 @@ if (!empty($random_images)) {
     <select id="categorie-img" onchange="updatePhotoGallery();">
         <option value="">Catégories</option>
         <?php
-        $categories = get_terms(['taxonomy' => 'Catégories', 'hide_empty' => true]);
+        $categories = get_terms(['taxonomy' => 'categorie', 'hide_empty' => false]);
         foreach ($categories as $category) {
-            echo '<option value="' . $category->term_id . '">' . $category->name . '</option>';
+            echo '<option value="' . esc_attr($category->term_id) . '">' . esc_html($category->name) . '</option>';
         }
         ?>
     </select>
+
     <select id="format" onchange="updatePhotoGallery();">
         <option value="">Formats</option>
+        
         <?php
-        $formats = get_terms(['taxonomy' => 'Formats custom', 'hide_empty' => true]);
+        $formats = get_terms(['taxonomy' => 'format', 'hide_empty' => false]);
         foreach ($formats as $format) {
-            echo '<option value="' . $format->term_id . '">' . $format->name . '</option>';
+            echo '<option value="' . esc_attr($format->term_id) . '">' . esc_html($format->name) . '</option>';
         }
         ?>
     </select>
@@ -70,3 +72,4 @@ $photo_query = new WP_Query($photo_args);
 </div>
 <button id="load-more-photos" >Charger plus</button>
 <?php get_footer(); ?>
+
