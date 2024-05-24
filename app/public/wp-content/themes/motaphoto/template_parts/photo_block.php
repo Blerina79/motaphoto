@@ -12,12 +12,12 @@ if (has_post_thumbnail($photo_id)) {
     }
     $category_names = implode(', ', $category_names);
     echo '<div class="photo-block">';
+    echo '<span class="photo-fullscreen"></span>';
     echo '<a href="' . esc_url($photo_url) . '">';
     echo '<img src="' . esc_url(get_the_post_thumbnail_url($photo_id)) . '" alt="' . esc_attr($photo_title) . '">';
     echo '<span class="photo-icon"></span>';
     echo '<span class="photo-title">' . esc_html($photo_title) . '</span>';
     echo '<span class="photo-category">' . esc_html($category_names) . '</span>';
-    echo '<span class="photo-fullscreen"></span>';
     echo '</a>';
     echo '</div>';
 } else {

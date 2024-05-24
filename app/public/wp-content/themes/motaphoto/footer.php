@@ -18,12 +18,12 @@
 <div class="containerLightbox">
     <div class="lightbox">
         <div class="lightbox-content">
-            <span class="lightbox__close">&times;</span>
+            <span class="lightbox__close"></span>
             <img class="lightboxImage" src="" alt="Image agrandie">
             <div class="lightbox-controls">
-                <button class="lightbox__prev">Précédente</button>
+                <button class="lightbox__prev"></button>
                 <span class="lightboxTitle">Nom de la photo</span>
-                <button class="lightbox__next">Suivante</button>
+                <button class="lightbox__next"></button>
             </div>
         </div>
     </div>

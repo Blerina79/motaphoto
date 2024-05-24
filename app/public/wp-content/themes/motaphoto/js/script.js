@@ -61,14 +61,16 @@ jQuery(document).ready(function($) {
     });
 
     // Gestion des interactions de la lightbox une fois que le DOM est entièrement chargé.
-    document.querySelectorAll('.photo-block').forEach(function(block) {
+    document.querySelectorAll('.photo-fullscreen').forEach(function(block) {
         block.addEventListener('click', function(e) {
             e.preventDefault();
-            var container = document.querySelector('.containerLightbox');
-            var lightboxImg = document.querySelector('.lightboxImage');
-            var title = this.querySelector('.photo-title').textContent;
-            var category = this.querySelector('.photo-category').textContent;
-            var imgSrc = this.querySelector('img').src;
+
+            let parent = block.parentElement;
+            let container = document.querySelector('.containerLightbox');
+            let lightboxImg = document.querySelector('.lightboxImage');
+            let title = parent.querySelector('.photo-title').textContent;
+            let category = parent.querySelector('.photo-category').textContent;
+            let imgSrc = parent.querySelector('img').src;
 
             container.style.display = 'flex';
             lightboxImg.src = imgSrc;
@@ -76,17 +78,20 @@ jQuery(document).ready(function($) {
         });
     });
 
+
     document.querySelector('.lightbox__close').addEventListener('click', function() {
         document.querySelector('.containerLightbox').style.display = 'none';
     });
 
     document.querySelector('.lightbox__prev').addEventListener('click', function() {
         // Gestion du précédent
+
     });
 
     document.querySelector('.lightbox__next').addEventListener('click', function() {
         // Gestion du suivant
     });
+
 
     // Gestion du menu burger
     const navToggler = document.querySelector('.nav-toggler');

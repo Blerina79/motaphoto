@@ -291,6 +291,14 @@ div.photo-main{
     object-fit: cover;
 }
 
+#categorie-img select {
+    box-shadow: 0 0 10px 100px #E00000 inset!important;
+}
+
+option select {
+    box-shadow: 0 0 10px 100px #E00000 inset !important;
+}
+
 @media (max-width: 426px){
     #photo-gallery {
         display: grid;
@@ -451,6 +459,7 @@ div.photo-main{
     width: 30px;
     height: 30px;
     cursor: pointer;
+    z-index: 20;
 }
 
 .photo-block:hover .photo-icon,
@@ -493,30 +502,38 @@ div.photo-main{
 .lightbox__next {
     position: absolute;
     top: 10px;
-    width: 30px;
-    height: 30px;
+    width: 15%;
+    height: 20px;
     background: rgba(0, 0, 0, 0.5);
     color: white !important;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    background: no-repeat;
 }
 
 .lightbox__close {
-    right: 10px;
+    right: -50px;
+    top: 20px;
+    height: 30px;
+    background-image: url('../assets/images/Croix.png');
 }
 
 .lightbox__prev {
     left: -10%;
     top: 50%;
     transform: translateY(-50%);
+    background-image: url('../assets/images/precedent.png'); 
+    background-color: transparent !important;
 }
 
 .lightbox__next {
     right: -10%;
     top: 50%;
     transform: translateY(-50%);
+    background-image: url('../assets/images/suivante.png');
+    background-color: transparent !important;
 }
 
 .lightboxImage {

@@ -18,14 +18,15 @@ add_action('wp_enqueue_scripts', 'theme_enqueue_styles_and_scripts');
  */
 function filter_photos_ajax()
 {
-    $category = isset($_POST['category']) ? $_POST['Category'] : '';
-    $format = isset($_POST['format']) ? $_POST['Formats'] : '';
-    $sort = isset($_POST['sort']) ? $_POST['sort'] : 'date';
+    $category = isset($_POST['category']) ? $_POST['category'] : '';
+    $format = isset($_POST['format']) ? $_POST['format'] : '';
+    $sort = isset($_POST['sort']) ? $_POST['sort'] : 'ASC';
+
     $args = [
         'post_type' => 'photo',
         'posts_per_page' => -1,
-        'orderby' => $sort ?: 'date',
-        'order' => 'ASC'
+        'orderby' =>'date',
+        'order' => $sort 
     ];
     if ($category) {
         $args['tax_query'][] = [

@@ -21,7 +21,7 @@ if (!empty($random_images)) {
 </div>
 
 <div id="filtre-photo">
-    <select id="categorie-img" onchange="updatePhotoGallery();">
+    <select id="categorie-img" >
         <option value="">Catégories</option>
         <?php
         $categories = get_terms(['taxonomy' => 'categorie', 'hide_empty' => false]);
@@ -31,7 +31,7 @@ if (!empty($random_images)) {
         ?>
     </select>
 
-    <select id="format" onchange="updatePhotoGallery();">
+    <select id="format">
         <option value="">Formats</option>
         
         <?php
@@ -41,10 +41,11 @@ if (!empty($random_images)) {
         }
         ?>
     </select>
-    <select id="filtre-tri" onchange="updatePhotoGallery();">
+    <select id="filtre-tri">
         <option value="trier">Trier par</option>
-        <option value="date">Date</option>
-        <option value="title">Titre</option>
+        <option value="ASC">A partir des plus récentes</option>
+        <option value="DESC">A partir des plus anciennes </option>
+
     </select>
 </div>
 
