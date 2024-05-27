@@ -99,6 +99,7 @@ h1{
     font-style: italic;
 }
 
+
 @media (max-width:1440px) {
     .entry-title{
         font-size: 62px;
@@ -113,7 +114,18 @@ h1{
     }
 }
 
+
+  /**** single-page  ****/
+
 @media (max-width:1024px) {
+
+    #content {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        padding-top: -5%;
+        min-height: 0px !important;
+    }
     .entry-title {
         font-size: 43px;
         text-transform: uppercase;
@@ -124,7 +136,7 @@ h1{
     h3 {
         font-family: 'space mono' !important;
         font-size: 20px;
-        margin-left: 10%;
+        margin-left: 11% !important;
         margin-top: 3% !important;
     }
 
@@ -132,28 +144,39 @@ h1{
         background-color: #C4C4C4;
         text-decoration: none;
         display: inline-block;
-        padding: 15px 40px;
+        padding: 15px 40px !important;
         margin-bottom: 20px;
+    }
+
+    .arrow-btn {
+        border: none;
+        color: black;
+        font-weight: 400;
+        margin-top: -10px;
+        font-size: 15px;
+        background-color: transparent !important;
+        margin-right: -19px !important;
     }
 
     .related-photos-container {
         display: flex;
         justify-content: space-around;
         max-width: 1020px;
-        margin-left: 5%;
+        margin-left: 7% !important;
         margin-top: 30px;
     }
 
     .line-down {
-        width: 84%;
+        width: 84% !important;
         border-top: 1px solid black;
-        margin-top: -180px;
+        margin-top: 10px;
+        
       } 
 
     .right-side {
         width: 48%;
         position: absolute;
-        bottom: 20%;
+        bottom: -5px !important;
         right: 0;
         margin-top: 10%;
     }
@@ -182,10 +205,18 @@ h1{
         margin-right: -26%;
         
     }
-    
-
 
 }
+
+ /**** single-page  ****/
+
+ @media (max-width:769px){
+    .button{
+        padding: 15px  20px;   
+    }
+ }
+
+
 
 
 
