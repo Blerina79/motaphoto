@@ -39,7 +39,9 @@ $formats = wp_get_post_terms(get_the_ID(), 'format');
         <hr class="line"/> <!-- Ligne de séparation -->
         <div class="photo-single">
             <p>Cette photo vous intéresse-t-elle ?</p>
-            <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="button">Contact</a> <!-- Lien vers la page de contact -->
+
+         <a href="#" class="button open-contact-modal" data-reference="<?php echo esc_attr($reference); ?>">Contact</a> <!-- Lien vers la page de contact avec la référence de la photo -->   
+            
         </div>
 
     </div>
@@ -74,10 +76,13 @@ $formats = wp_get_post_terms(get_the_ID(), 'format');
     </div>
 
 <!-- Modale de Contact Form 7 -->
-<div class="contact-modal" style="display:none;">
+<div  id="contact-modal" class="contact-modal" style="display:none;">
     <div class="modal-content">
-        <?php echo do_shortcode('[contact-form-7 id="123" title="Contact form 1"]'); ?>
-        <button class="close-modal">Fermer</button>
+        <?php echo do_shortcode('[contact-form-7 id="0004608" title="Contact form 1]'); ?>
+        
+        <input type="hidden" id="photo-reference" name="photo-reference" value="">
+        
+        
     </div>
 </div>
 
@@ -107,4 +112,3 @@ $formats = wp_get_post_terms(get_the_ID(), 'format');
     ?>
 </div>
 <?php get_footer(); ?> <!-- Inclut le fichier footer.php -->
-

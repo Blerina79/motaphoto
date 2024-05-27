@@ -514,14 +514,14 @@ option select {
 }
 
 .lightbox__close {
-    right: -50px;
-    top: 20px;
+    right: -170px;
+    top: -70px;
     height: 30px;
     background-image: url('../assets/images/Croix.png');
 }
 
 .lightbox__prev {
-    left: -10%;
+    left: -20%;
     top: 50%;
     transform: translateY(-50%);
     background-image: url('../assets/images/precedent.png'); 
@@ -529,7 +529,7 @@ option select {
 }
 
 .lightbox__next {
-    right: -10%;
+    right: -20%;
     top: 50%;
     transform: translateY(-50%);
     background-image: url('../assets/images/suivante.png');
@@ -538,14 +538,15 @@ option select {
 
 .lightboxImage {
     width: 100%;
-    height: auto;
     display: block;
     margin: 0 auto;
+    object-fit: cover;
+    max-height: 550px;
 }
 
 .lightboxTitle {
     position: absolute;
-    bottom: 10px;
+    bottom: -70px;
     left: 50%;
     transform: translateX(-50%);
     color: white;
@@ -635,7 +636,7 @@ option select {
 
 /**** modale ****/
 
-.modal-content {
+/*.modal-content {
     position: fixed;
     left: 50%;
     top: 50%;
@@ -647,7 +648,7 @@ option select {
     justify-content: center;
     align-items: center;
     z-index: 9999;
-}
+}*/
 
 .modal-content{
     background: white;
@@ -657,6 +658,8 @@ option select {
     max-width: 500px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     border: 3px solid black;
+
+    position: relative;
 }
 
 .modal-overlay {

@@ -1751,3 +1751,4 @@ Stack trace:
 [24-May-2024 09:41:18 UTC] PHP Warning:  Undefined array key "Formats" in C:\Users\User\Local Sites\motaphoto\app\public\wp-content\themes\motaphoto\functions.php on line 22
 [24-May-2024 09:41:44 UTC] PHP Warning:  Undefined array key "Category" in C:\Users\User\Local Sites\motaphoto\app\public\wp-content\themes\motaphoto\functions.php on line 21
 [24-May-2024 09:41:44 UTC] PHP Warning:  Undefined array key "Formats" in C:\Users\User\Local Sites\motaphoto\app\public\wp-content\themes\motaphoto\functions.php on line 22
+[27-May-2024 10:06:28 UTC] PHP Parse error:  syntax error, unexpected end of file, expecting "elseif" or "else" or "endif" in C:\Users\User\Local Sites\motaphoto\app\public\wp-content\themes\motaphoto\single-photo.php on line 117

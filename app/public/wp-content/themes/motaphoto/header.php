@@ -48,6 +48,16 @@
         </div>
 
     </header>
+
+    <!-- Modale de Contact Form 7 (ajoutée ici pour être disponible sur toutes les pages) -->
+    <div id="contact-modal" class="contact-modal" style="display:none;">
+        <div class="modal-content">
+            <?php echo do_shortcode('[contact-form-7 id="123" title="Contact form 1"]'); ?>
+            <input type="hidden" id="photo-reference" name="photo-reference" value="">
+        </div>
+    </div>
+
     <?php wp_body_open(); ?> <!-- Hook WordPress pour ajouter du contenu spécifique juste après la balise body -->
+
 </body>
 </html>

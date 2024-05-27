@@ -48,48 +48,32 @@ jQuery(document).ready(function($) {
     });
 
     // Gestion de l'ouverture et de la fermeture de la modale de contact.
-    $('.open-contact-modal a').click(function(e) {
+    /*$('.open-contact-modal').click(function(e) {*/
+    $(document).on('click', '.open-contact-modal, .open-contact-modal a', function(e) {
         e.preventDefault();
-        $('#contact-form').fadeIn().css('display', 'flex');
+        let reference = $(this).data('reference'); // Récupère la référence de la photo
+
+        if (reference) {
+
+        $('#photo-reference').val(reference); // Définit la référence de la photo dans le champ caché                              
+    }
+        $('#contact-modal').fadeIn().css('display', 'flex');
     });
+
+
+    $(document).on('click', '.close-modal', function() {
+
+   // $('.close-modal').click(function() {
+        $('.contact-modal').fadeOut();
+    });
+
+
 
     $(document).mouseup(function(e) {
-        var modal = $("#contact-form .modal-content");
+        var modal = $("#contact-modal .modal-content");
         if (!modal.is(e.target) && modal.has(e.target).length === 0) {
-            $('#contact-form').fadeOut();
+            $('#contact-modal').fadeOut();
         }
-    });
-
-    // Gestion des interactions de la lightbox une fois que le DOM est entièrement chargé.
-    document.querySelectorAll('.photo-fullscreen').forEach(function(block) {
-        block.addEventListener('click', function(e) {
-            e.preventDefault();
-
-            let parent = block.parentElement;
-            let container = document.querySelector('.containerLightbox');
-            let lightboxImg = document.querySelector('.lightboxImage');
-            let title = parent.querySelector('.photo-title').textContent;
-            let category = parent.querySelector('.photo-category').textContent;
-            let imgSrc = parent.querySelector('img').src;
-
-            container.style.display = 'flex';
-            lightboxImg.src = imgSrc;
-            document.querySelector('.lightboxTitle').textContent = title + ' - ' + category;
-        });
-    });
-
-
-    document.querySelector('.lightbox__close').addEventListener('click', function() {
-        document.querySelector('.containerLightbox').style.display = 'none';
-    });
-
-    document.querySelector('.lightbox__prev').addEventListener('click', function() {
-        // Gestion du précédent
-
-    });
-
-    document.querySelector('.lightbox__next').addEventListener('click', function() {
-        // Gestion du suivant
     });
 
 
@@ -110,5 +94,57 @@ jQuery(document).ready(function($) {
             menuContent.classList.remove('active');
         }
     });
+});
+
+
+jQuery(document).ready(function($) {
+    let currentIndex = 0;
+    let photos = [];
+
+    // Fonction pour initialiser les blocs de photos et ajouter des écouteurs d'événements
+    function initializePhotoBlocks() {
+        photos = Array.from(document.querySelectorAll('.photo-block'));
+        photos.forEach((block, index) => {
+            block.querySelector('.photo-fullscreen').addEventListener('click', function(e) {
+                e.preventDefault();
+                currentIndex = index;
+                openLightbox();
+            });
+        });
+    }
+
+    // Ouvre la lightbox avec l'image actuelle
+    function openLightbox() {
+        let block = photos[currentIndex];
+        let container = document.querySelector('.containerLightbox');
+        let lightboxImg = document.querySelector('.lightboxImage');
+        let title = block.querySelector('.photo-title').textContent;
+        let category = block.querySelector('.photo-category').textContent;
+        let imgSrc = block.querySelector('img').src;
+
+        container.style.display = 'flex';
+        lightboxImg.src = imgSrc;
+        document.querySelector('.lightboxTitle').textContent = title + ' - ' + category;
+    }
+
+    // Ferme la lightbox
+    document.querySelector('.lightbox__close').addEventListener('click', function() {
+        document.querySelector('.containerLightbox').style.display = 'none';
+    });
+
+    // Affiche l'image précédente
+    document.querySelector('.lightbox__prev').addEventListener('click', function() {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : photos.length - 1;
+        openLightbox();
+    });
+
+    // Affiche l'image suivante
+    document.querySelector('.lightbox__next').addEventListener('click', function() {
+        currentIndex = (currentIndex < photos.length - 1) ? currentIndex + 1 : 0;
+        openLightbox();
+    });
+
+    // Initialiser les blocs de photos au chargement de la page
+    initializePhotoBlocks();
 });
 
