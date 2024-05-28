@@ -127,6 +127,7 @@ h1{
         padding-top: -5%;
         min-height: 0px !important;
     }
+
     .entry-title {
         font-size: 43px;
         text-transform: uppercase;
@@ -162,7 +163,7 @@ h1{
     .related-photos-container {
         display: flex;
         justify-content: space-around;
-        max-width: 1020px;
+        max-width: 1024px;
         margin-left: 7% !important;
         margin-top: 30px;
     }
@@ -180,36 +181,120 @@ h1{
         bottom: -5px !important;
         right: 0;
         margin-top: 10%;
+    } 
+
+}
+
+/**************** front-page  ****************/
+
+@media  screen and (min-width:769px) and (max-width:1024px) {
+
+    .hero h1 {
+        color: transparent;
+        background: none;
+        -webkit-text-stroke: 1px white;
+        -webkit-text-fill-color: transparent;
+        display: flex;
+        justify-content: space-around;
+        padding-top: 22%;
+        font-size: 80px !important;
+        margin-right: 30%;
+    }
+
+    
+    #filtre-photo {
+        box-sizing: border-box;
+        padding: 5px 10px;
+        height: 38px;
+        margin-inline-end: 11%;
+        margin-left: 11.5%;
+
     }
 
     #categorie-img {
-        width: 200px;
+        width: 240px !important;
         height: 40px;
         padding: 5px 10px;
         box-sizing: border-box;
         border-radius: 10px;
-        margin-left: -29%;
-    }
-    #format {
-        width: 200px;
-        height: 40px;
-        padding: 5px 10px;
-        box-sizing: border-box;
-        border-radius: 10px;
-        margin-right: 28%;
-    }
-    #filtre-tri {
-        width: 200px;
-        height: 40px;
-        box-sizing: border-box;
-        border-radius: 10px;
-        margin-right: -26%;
+        margin-left: -27% !important; 
         
+    }
+
+    #format {
+        width: 240px !important ;
+        height: 40px;
+        padding: 5px 10px;
+        box-sizing: border-box;
+        border-radius: 10px;
+        margin-left: -8%;
+        
+    }
+
+    #filtre-tri {
+        width: 240px !important;
+        height: 40px;
+        box-sizing: border-box;
+        border-radius: 10px;
+        margin-right: -17% !important;
+        
+    }
+
+    #photo-gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 7px;
+        max-width: 1024px;
+        margin-left: 1% !important;
+        margin-right: 1% !important;
+       
     }
 
 }
 
- /**** single-page  ****/
+     /**************** front-page  ****************/
+
+     @media screen and (min-width:1024px) and (max-width:1440px){
+
+        #filtre-photo {
+            box-sizing: border-box;
+            padding: 5px 10px;
+            height: 38px;
+            margin-inline-end: 11%;
+            margin-left: -4% !important;
+        }
+
+        #filtre-tri {
+            width: 250px;
+            height: 40px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            margin-right: -12% !important;
+        }
+
+        #format {
+            width: 250px;
+            height: 40px;
+            padding: 5px 10px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            margin-right: 21% !important;
+        }
+
+        #load-more-photos {
+            margin-left: 46% !important;
+            color: black;
+            background-color: #C4C4C4;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+
+     }
+
+
+
+ /**************** single-page  ******************/
 
  @media screen and (min-width:426px) and (max-width:768px){
     .button{
@@ -234,15 +319,13 @@ h1{
     #filtre-photo {
         flex-direction: column !important;
         gap: 15px;
-    }
-
-    #filtre-photo {
         display: flex;
         margin: 50px 150px;
         flex-direction: column;
         align-content: stretch;
         align-items: baseline;
-        margin-left: 24%;
+        margin-left: 13% !important;
+       
     }
 
     #categorie-img{
@@ -456,7 +539,7 @@ option select {
         box-sizing: border-box;
         border-radius: 10px;
         margin-right: -16%;
-        /* margin-left: 10%; */
+
     }
 
     h1 {
