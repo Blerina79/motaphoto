@@ -233,8 +233,16 @@ h1{
 
     #filtre-photo {
         flex-direction: column !important;
-        align-items: flex-end;
         gap: 15px;
+    }
+
+    #filtre-photo {
+        display: flex;
+        margin: 50px 150px;
+        flex-direction: column;
+        align-content: stretch;
+        align-items: baseline;
+        margin-left: 24%;
     }
 
     #categorie-img{
@@ -247,6 +255,7 @@ h1{
 
     #filtre-tri {
         align-items: center;
+        margin-right: -30%;
     }
 
     #photo-gallery {
