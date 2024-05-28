@@ -118,7 +118,7 @@ h1{
 
   /**** single-page  ****/
 
-@media (max-width:1024px) {
+@media screen and (min-width:769px) and (max-width:1024px) {
 
     #content {
         display: flex;
@@ -211,7 +211,7 @@ h1{
 
  /**** single-page  ****/
 
- @media (max-width:769px){
+ @media screen and (min-width:426px) and (max-width:768px){
     .button{
         padding: 15px  20px;   
     }
@@ -221,7 +221,7 @@ h1{
 
 
 
-@media (max-width: 426px) {
+@media screen and (max-width: 425px) {
     .hero {
         width: 100%;
     }
@@ -329,7 +329,7 @@ p {
     margin-bottom: 30px !important;
 }
 
-@media (max-width: 426px) {
+@media screen and (max-width: 425px) {
     .site-header {
         padding-inline-start: 30px !important;
     }
@@ -430,7 +430,7 @@ option select {
     box-shadow: 0 0 10px 100px #E00000 inset !important;
 }
 
-@media (max-width:769px) {
+@media screen and (min-width:426px) and (max-width:768px) {
     #categorie-img {
         width: 150px;
         height: 40px;
@@ -502,7 +502,7 @@ option select {
 
 
 
-@media (max-width: 426px){
+@media screen and (max-width: 425px){
     #photo-gallery {
         display: grid;
         grid-template-columns: ( 1fr);
@@ -576,7 +576,8 @@ option select {
 
     /******lightbox*****/
 
-    * Styles pour la photo-block */
+    /* Styles pour la photo-block */
+
 .photo-block {
     position: relative;
     display: inline-block;
@@ -657,6 +658,7 @@ option select {
 }
 
 /* Styles pour la lightbox */
+
 .containerLightbox {
     display: none;
     position: fixed;
@@ -793,11 +795,6 @@ option select {
     box-sizing: border-box;
 }
 
-/*.wpcf7-form-control .wpcf7-submit .has-spinner{
-    justify-content: center;
-    align-items: center;
-    margin-left: 30px;
-}*/
 
 label {
     display: inline-block;
@@ -900,7 +897,7 @@ header.fixed{
     display: block;
 }
 
-@media (max-width: 426px) {
+@media screen and (max-width: 425px) {
     .site-navigation {
         display: none !important;
     }
@@ -991,7 +988,7 @@ footer .footer-inner .site-navigation a:hover {
     justify-content: space-evenly;
    }
 
-@media (max-width: 426px) {
+@media screen and (max-width: 425px) {
 
     hr {
         margin-bottom: 40px;
