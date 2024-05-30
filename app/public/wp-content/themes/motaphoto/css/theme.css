@@ -397,7 +397,7 @@ h1{
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 20px;
+            margin: top 130px;
             order: 3;
         }
 
@@ -414,32 +414,38 @@ h1{
         display: flex;
         flex-direction: column !important;
         
-    }
+        }
 
-    .line {
+       .line {
         width: 200%;
         margin-left: -55%;
-    }
+       }
 
-    .line-down {
+        .line-down {
         width: 100% !important;
-    }
+        }
 
-    .page-header {
+        .page-header {
         margin-top: 210px;
-    }
-    .related-photos-container {
+       }
+       .related-photos-container {
         flex-direction: column;
         margin-left: 20px;
         align-items: flex-end;
-    }
+       }
 
-    h3{
+       h3{
        align-items: center; 
        margin-left: 13% !important;
-    }
+       }
+
+       p{
+        margin-bottom: 5px !important;
+       }
         
-    }
+      }
+
+ /**************** -front-page -******************/
 
 @media screen and (max-width: 425px) {
     .hero {
@@ -1051,18 +1057,24 @@ label {
     display: flex;
     justify-content: space-around;
     max-width: 1150px;
-    /*margin-left: 17%;*/
     margin-top: 30px;
+    margin-left: 10%;
 }
 .related-photos-container .photo-block {
     flex: 1 1 48%;
     margin: 10px;
 }
 
+.line-down {
+    width: 80%;
+    border-top: 1px solid black;
+    margin-top: -5px;
+}
+
 h3{
     font-family:'space mono'!important;
     font-size: 20px;
-    margin-left: 18%;
+    margin-left: 11%;
     margin-top: 3% !important;
 }
 
@@ -1071,8 +1083,7 @@ h3{
 button.nav-toggler {
     background-color: transparent !important;
     border: none !important;
-    background-color: transparent; /* Couleur de fond du bouton */
-    border: none;
+    background-color: transparent;
     cursor: pointer;
     margin-right: 100px;
     margin-top: -15px;
@@ -1098,7 +1109,7 @@ button.nav-toggler {
 .burger-menu-content {
     display: none;
     position: fixed;
-    top: 110px;
+    top: 60px;
     left: 0;
     width: 100%;
     background-color: red;
