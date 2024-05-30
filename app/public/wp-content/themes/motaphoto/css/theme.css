@@ -292,18 +292,40 @@ h1{
 
      }
 
-
-
  /**************** single-page  ******************/
 
  @media screen and (min-width:426px) and (max-width:768px){
+
+    #content {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        padding-top: -5%;
+        margin-top: -2%;
+    }
+
+    .page-header {
+        max-width: 700px !important;
+    }
     .button{
         padding: 15px  20px;   
     }
+    h2{
+        font-size: 58px;
+    }
+
+    .right-side {
+        width: 48%;
+        position: absolute;
+        bottom: 160px !important;
+        right: 0;  
+    }
+    .line-down {
+        width: 90%;
+        border-top: 1px solid black;
+        margin-top: -10%;
+    }
  }
-
-
-
 
 
 @media screen and (max-width: 425px) {
@@ -324,8 +346,7 @@ h1{
         flex-direction: column;
         align-content: stretch;
         align-items: baseline;
-        margin-left: 13% !important;
-       
+        margin-left: 13% !important; 
     }
 
     #categorie-img{
@@ -342,19 +363,16 @@ h1{
     }
 
     #photo-gallery {
-        grid-template-columns: 1fr !important; /* Passe à une seule colonne pour afficher les photos les unes sous les autres */
+        grid-template-columns: 1fr !important; 
         gap: 5px;
         padding-top: 90px;
     }
 
     #load-more-photos {
         margin-left: 35%;
-    }
-    
+    }  
 
 }
-
-
 
 /***** single-page*****/
 
