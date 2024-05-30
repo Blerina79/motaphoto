@@ -307,6 +307,13 @@ h1{
     .page-header {
         max-width: 700px !important;
     }
+
+    .entry-title {
+        font-size: 51px;
+        text-transform: uppercase;
+        font-family: 'space mono', sans-serif;
+        font-style: italic;
+    }
     .button{
         padding: 15px  45px !important; 
         font-family: 'space mono';
@@ -318,6 +325,13 @@ h1{
         font-size: 50px;
     }
 
+    h3 {
+        font-family: 'space mono' !important;
+        font-size: 20px;
+        margin-left: 8% !important;
+        margin-top: 3% !important;
+    }
+
     .right-side {
         width: 48%;
         position: absolute;
@@ -327,7 +341,7 @@ h1{
 
     .left-side {
         width: 48%;
-        margin-top: 37.5%;
+        margin-top: 42% !important;
         position: absolute;
     }
     .line-down {
@@ -345,7 +359,16 @@ h1{
         margin-block-start: 0;
         margin-block-end: .9rem;
         margin-bottom: 18px; 
- }
+    }
+    .related-photos-container {
+        display: flex;
+        justify-content: space-around;
+        max-width: 700px;
+        margin-left: 7% !important;
+        margin-top: 30px;
+    }
+
+
 
     }
 
