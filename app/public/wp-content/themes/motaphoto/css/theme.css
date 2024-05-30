@@ -301,17 +301,21 @@ h1{
         justify-content: space-between;
         position: relative;
         padding-top: -5%;
-        margin-top: -2%;
+        margin-top: -20%;
     }
 
     .page-header {
         max-width: 700px !important;
     }
     .button{
-        padding: 15px  20px;   
+        padding: 15px  45px !important; 
+        font-family: 'space mono';
+        margin-left: -22% !important; 
+        margin-bottom:-2px !important; 
     }
+
     h2{
-        font-size: 58px;
+        font-size: 50px;
     }
 
     .right-side {
@@ -320,12 +324,30 @@ h1{
         bottom: 160px !important;
         right: 0;  
     }
-    .line-down {
-        width: 90%;
-        border-top: 1px solid black;
-        margin-top: -10%;
+
+    .left-side {
+        width: 48%;
+        margin-top: 37.5%;
+        position: absolute;
     }
+    .line-down {
+        width: 87% !important;
+        border-top: 1px solid black;
+        margin-top: -21% !important;
+    }
+    .photo-thumbnail {
+        width: 80px;
+        height: 80px;
+        margin-left: 72% !important;
+    }
+
+    p {
+        margin-block-start: 0;
+        margin-block-end: .9rem;
+        margin-bottom: 18px; 
  }
+
+    }
 
 
 @media screen and (max-width: 425px) {
