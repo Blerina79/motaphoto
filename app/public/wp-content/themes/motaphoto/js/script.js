@@ -51,12 +51,11 @@ jQuery(document).ready(function($) {
     /*$('.open-contact-modal').click(function(e) {*/
     $(document).on('click', '.open-contact-modal, .open-contact-modal a', function(e) {
         e.preventDefault();
-        let reference = $(this).data('reference'); // Récupère la référence de la photo
+        let reference = $(".reference-value").data('reference'); // Récupère la référence de la photo
 
         if (reference) {
-
-        $('#photo-reference').val(reference); // Définit la référence de la photo dans le champ caché                              
-    }
+            $('#reference-value').val(reference); // Définit la référence de la photo dans le champ caché                              
+        }
         $('#contact-modal').fadeIn().css('display', 'flex');
     });
 

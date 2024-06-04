@@ -20,7 +20,7 @@ $formats = wp_get_post_terms(get_the_ID(), 'format');
     <div class="left-side">
         <header class="page-header">
             <?php the_title('<h2 class="entry-title">', '</h2>'); ?> <!-- Affiche le titre de la photo -->
-            <p>Référence: <?php echo esc_html($reference); ?></p> <!-- Affiche la référence de la photo -->
+            <p class="reference-value" data-reference="<?php echo esc_html($reference); ?>" >Référence: <?php echo esc_html($reference); ?></p> <!-- Affiche la référence de la photo -->
 
             <p>Catégories:
             <?php foreach ($categories as $category) {
