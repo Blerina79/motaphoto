@@ -152,7 +152,7 @@ h1{
 
  
 
-/***** single-page*****/
+/***** single-photo*****/
 
 #content{
     display: flex;
@@ -177,7 +177,8 @@ h1{
 
 .left-side{
     width: 48%;
-    margin-top: 37.5%; 
+    margin-top: 37.5%;
+
 }
 
 .right-side{
@@ -994,6 +995,7 @@ footer .footer-inner .site-navigation a:hover {
         padding: 5px 10px;
         box-sizing: border-box;
         border-radius: 10px;
+        margin-left: -38% !important;
         }
 
     #format {
@@ -1002,6 +1004,7 @@ footer .footer-inner .site-navigation a:hover {
         padding: 5px 10px;
         box-sizing: border-box;
         border-radius: 10px;
+        margin-left: -12.5%;
         }
 
     #filtre-tri {
@@ -1009,7 +1012,7 @@ footer .footer-inner .site-navigation a:hover {
         height: 40px;
         box-sizing: border-box;
         border-radius: 10px;
-        margin-right: -16%;
+        margin-right: -21%;
 
     }
 
@@ -1067,7 +1070,6 @@ footer .footer-inner .site-navigation a:hover {
         flex-direction: column;
         align-items: center;
         padding: 0 10px;
-        display: flex;
         justify-content: space-between;
         position: relative;
         padding-top: -5%;
@@ -1076,9 +1078,8 @@ footer .footer-inner .site-navigation a:hover {
     }
 
     .right-side {
-        width: 100% !important; 
+        width: 60%; 
         order: 1; 
-        width: 48%;
         position: absolute;
         bottom: 160px !important;
         right: 0;   
@@ -1102,25 +1103,31 @@ footer .footer-inner .site-navigation a:hover {
         width: 100% !important;
         display: flex;
         flex-direction: column;
-        align-items: center;
         margin-top:130px !important;
         order: 3;
-        position: absolute;
+
+        margin-bottom: 28%;
+        align-items: center;
+        
     }
 
     .button {
         display: flex;
         flex-direction: column !important;
-    }
+       }
     
       .photo-navigation {
-    display: none !important;
+      display: none !important;
     }
 
-   .photo-single {
-    display: flex;
-    flex-direction: column !important;
+     .photo-single {
+      display: flex;
+      flex-direction: column !important;
     
+    }
+
+    .photo-single p{
+        display: none;
     }
 
    .line {
@@ -1137,9 +1144,12 @@ footer .footer-inner .site-navigation a:hover {
    }
 
    .related-photos-container {
-    flex-direction: column;
     margin-left: 20px;
     align-items: flex-end;
+    display: flex;
+    justify-content: space-around;
+    max-width: 700px;
+    margin-top: 30px;
    }
 
    h3{
@@ -1193,13 +1203,16 @@ footer .footer-inner .site-navigation a:hover {
     margin-left: 72% !important;
  }
 
-    
-.related-photos-container {
-    display: flex;
-    justify-content: space-around;
-    max-width: 700px;
-    margin-left: 7% !important;
-    margin-top: 30px;
+
+  .photo-block{ 
+    height: 200px;
+    width: 100%;
+
+  }
+
+  div.photo-main{
+    margin-bottom: -90% !important;
+
   }
 
 }
@@ -1273,8 +1286,19 @@ footer .footer-inner .site-navigation a:hover {
       /************* -responsive single-photo.php- *************/
 
 
+      @media screen and (max-width:450px) {
+         
+        div.photo-main{
+           margin-bottom:5% !important;
+           margin-left: -32%; 
+        }
 
-
+        .left-side{
+            display: flex;
+            flex-direction: column;
+          
+        }
+      }
 
 
 
