@@ -1053,7 +1053,7 @@ footer .footer-inner .site-navigation a:hover {
 
     .right-side img {
         width: 80%;
-        margin-bottom: 485px;
+        margin-bottom: 487px;
         margin-left: 10.5%;
     }
 
@@ -1080,7 +1080,13 @@ footer .footer-inner .site-navigation a:hover {
         flex-direction: column !important;
         justify-content: center;
         margin-right: 35%;
+        padding: 15px  45px !important; 
+        font-family: 'space mono';
+        margin-left: -22% !important; 
+        margin-bottom:-2px !important; 
        }
+       
+    
     
       .photo-navigation {
       display: none !important;
@@ -1136,13 +1142,7 @@ footer .footer-inner .site-navigation a:hover {
 
   
 
-  .button{
-    padding: 15px  45px !important; 
-    font-family: 'space mono';
-    margin-left: -22% !important; 
-    margin-bottom:-2px !important; 
-   }
-
+  
    h2{
     font-size: 50px;
   }
@@ -1251,7 +1251,7 @@ footer .footer-inner .site-navigation a:hover {
 
         .page-header{
             max-width: 700px;
-            margin-top: 450px;
+            margin-top: 460px;
             margin-left: -19%;
         }
          
@@ -1265,10 +1265,12 @@ footer .footer-inner .site-navigation a:hover {
             display: flex;
             flex-direction: column;
             margin-left: 20%;
+           
         }
 
         .right-side{
-            width: 100%;
+            width: 90%;
+            margin-right: 4%;
         }
 
         .right-side img {
@@ -1289,6 +1291,24 @@ footer .footer-inner .site-navigation a:hover {
         .photo-single{
             margin-bottom: 30px;
         }
+
+        .photo-single p{
+          display:contents;
+          align-items: center;
+          margin-bottom: 5%;
+         
+        }
+
+        .button{
+            width: 250px;
+            align-items: center;
+            color: black;
+            margin-left: -50%;
+        }
+
+
+
+       
 
     
       }
