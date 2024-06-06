@@ -720,10 +720,6 @@ header.fixed{
 }
 
 
-
-
-
-
 /**** footer ****/
 
 footer .footer-inner .site-navigation a:hover {
@@ -1079,14 +1075,12 @@ footer .footer-inner .site-navigation a:hover {
         display: flex;
         flex-direction: column !important;
         justify-content: center;
-        margin-right: 35%;
         padding: 15px  45px !important; 
         font-family: 'space mono';
-        margin-left: -22% !important; 
-        margin-bottom:-2px !important; 
+        margin-bottom:-2px !important;
+        margin-right: 37% ; 
        }
        
-    
     
       .photo-navigation {
       display: none !important;
@@ -1141,7 +1135,6 @@ footer .footer-inner .site-navigation a:hover {
    }
 
   
-
   
    h2{
     font-size: 50px;
@@ -1221,20 +1214,23 @@ footer .footer-inner .site-navigation a:hover {
         flex-direction: column;
         align-content: stretch;
         align-items: baseline;
-        margin-left: 29% !important; 
+        margin-left: 20% !important; 
     }
 
     #categorie-img{
         margin-top: -20px;
+        width: 250px;
     }
 
     #format {
         align-items: center;
+        width: 250px;
     }
 
     #filtre-tri {
         align-items: center;
         margin-right: -30%;
+        width: 250px;
     }
     
     }
@@ -1275,7 +1271,8 @@ footer .footer-inner .site-navigation a:hover {
 
         .right-side img {
             width: 100%;
-            margin-left: 32%;  
+            margin-left: 32%;
+            margin-bottom: 520px;  
         }
 
         .related-photos-container {
@@ -1290,25 +1287,25 @@ footer .footer-inner .site-navigation a:hover {
 
         .photo-single{
             margin-bottom: 30px;
+            align-items: center;
+            margin-right: -35%;
+            
         }
 
         .photo-single p{
           display:contents;
           align-items: center;
           margin-bottom: 5%;
-         
+          margin-left: -15%;
+
         }
 
         .button{
             width: 250px;
             align-items: center;
             color: black;
-            margin-left: -50%;
+            
         }
-
-
-
-       
 
     
       }
