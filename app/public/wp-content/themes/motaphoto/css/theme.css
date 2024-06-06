@@ -1179,11 +1179,11 @@ footer .footer-inner .site-navigation a:hover {
     #photo-gallery {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 10px;
         max-width: 1300px;
         margin: 20px auto;
-        margin-left: 5%;
-        margin-right: 5%;
+        margin-left: 3% !important;
+        margin-right: 3% !important;
         padding-top: 90px;
     }
 
@@ -1214,7 +1214,7 @@ footer .footer-inner .site-navigation a:hover {
         flex-direction: column;
         align-content: stretch;
         align-items: baseline;
-        margin-left: 20% !important; 
+        margin-left: 18% !important; 
     }
 
     #categorie-img{
