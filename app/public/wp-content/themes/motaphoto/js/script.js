@@ -117,13 +117,13 @@ jQuery(document).ready(function($) {
         let block = photos[currentIndex];
         let container = document.querySelector('.containerLightbox');
         let lightboxImg = document.querySelector('.lightboxImage');
-        let title = block.querySelector('.photo-title').textContent;
+        let reference = block.querySelector('.photo-title').textContent;
         let category = block.querySelector('.photo-category').textContent;
         let imgSrc = block.querySelector('img').src;
 
         container.style.display = 'flex';
         lightboxImg.src = imgSrc;
-        document.querySelector('.lightboxTitle').textContent = title + ' - ' + category;
+        document.querySelector('.lightboxTitle').textContent = reference + ' - ' + category;
     }
 
     // Ferme la lightbox

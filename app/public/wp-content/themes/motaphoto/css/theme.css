@@ -247,14 +247,10 @@ p {
     justify-content: space-around;
     margin: 50px 150px;
     flex-direction: row;
-}
-
-#filtre-photo {
     box-sizing: border-box;
     padding: 5px  10px;
     height: 38px;
-    margin-inline-end:11%;
-    
+    margin-inline-end:11%;    
 }
 
 #categorie-img {
@@ -303,8 +299,6 @@ div.photo-main{
 option select {
     box-shadow: 0 0 10px 100px #E00000 inset !important;
 }
-
-
 
 
 #load-more-photos{
@@ -367,24 +361,6 @@ option select {
 
     /* Styles pour la photo-block */
 
-.photo-block {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    width: 100%;
-    height: 450px;
-    overflow: hidden;
-}
-
-.photo-block img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.photo-icon,
 .photo-title,
 .photo-category,
 .photo-fullscreen {
@@ -394,15 +370,6 @@ option select {
     justify-content: center;
     opacity: 0;
     transition: opacity 0.3s;
-}
-
-.photo-icon {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(150, 150, 150, 0.8);
-    width: 100%;
-    height: 100%;
 }
 
 .photo-title {
@@ -836,8 +803,8 @@ footer .footer-inner .site-navigation a:hover {
         -webkit-text-fill-color: transparent;
         display: flex;
         justify-content: space-around;
-        padding-top: 22%;
-        font-size: 80px;
+        padding-top: 16%;
+        font-size: 70px !important;
         margin-right: 30%;
     }
 
@@ -1141,6 +1108,7 @@ footer .footer-inner .site-navigation a:hover {
 
     .page-header {
     margin-top: 210px;
+    max-width: 700px !important;
    }
 
    .related-photos-container {
@@ -1165,11 +1133,6 @@ footer .footer-inner .site-navigation a:hover {
     margin-block-start: 0;
     margin-block-end: .9rem;
     margin-bottom: 18px; 
-   }
-
-   
-  .page-header {
-    max-width: 700px !important;
    }
 
   .entry-title {
