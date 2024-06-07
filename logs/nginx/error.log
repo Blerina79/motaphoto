@@ -12,3 +12,5 @@
 2024/05/23 14:03:50 [error] 324#7236: *11588 WSARecv() failed (10054: FormatMessage() error:(15105)) while reading response header from upstream, client: 127.0.0.1, server: , request: "OPTIONS /wp-json/wp/v2/photo/131?_locale=user HTTP/1.0", upstream: "fastcgi://127.0.0.1:10055", host: "motaphoto.local", referrer: "http://motaphoto.local/wp-admin/post.php?post=131&action=edit"
 2024/05/23 14:03:50 [error] 324#7236: *11592 WSARecv() failed (10054: FormatMessage() error:(15105)) while reading response header from upstream, client: 127.0.0.1, server: , request: "GET /wp-json/wp/v2/themes?context=edit&status=active&_locale=user HTTP/1.0", upstream: "fastcgi://127.0.0.1:10055", host: "motaphoto.local", referrer: "http://motaphoto.local/wp-admin/post.php?post=131&action=edit"
 2024/06/04 23:08:00 [alert] 9976#9540: OpenEvent("ngx_master_14452") failed (2: FormatMessage() error:(15100))
+2024/06/07 00:52:15 [alert] 11948#6608: worker process 20756 exited with code C0000142
+2024/06/07 00:52:15 [alert] 11948#6608: could not respawn worker

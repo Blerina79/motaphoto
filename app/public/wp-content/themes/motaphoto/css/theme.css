@@ -292,9 +292,9 @@ div.photo-main{
     object-fit: cover;
 }
 
-#categorie-img select {
+ /*select {
     box-shadow: 0 0 10px 100px #E00000 inset!important;
-}
+}*/
 
 option select {
     box-shadow: 0 0 10px 100px #E00000 inset !important;

@@ -59,24 +59,6 @@ function filter_photos_ajax()
 add_action('wp_ajax_filter_photos', 'filter_photos_ajax');
 add_action('wp_ajax_nopriv_filter_photos', 'filter_photos_ajax');
 
-/**
- * Insère une image de contact par shortcode.
- */
-/*function insert_contact_image() {
-    $image_path = get_stylesheet_directory_uri() . '/assets/images/contact_form.png';
-    return '<img src="' . esc_url($image_path) . '" alt="Contact">';
-}
-add_shortcode('contact_image', 'insert_contact_image');*/
-
-/**
- * Enregistre les taxonomies personnalisées pour les photos.
- */
-/*function register_photo_taxonomies() {
-    register_taxonomy('categorie', 'photo', ['label' => 'Catégories de Photos', 'rewrite' => ['slug' => 'categorie'], 'hierarchical' => false]);
-    register_taxonomy('format', 'photo', ['label' => 'Formats de Photos', 'rewrite' => ['slug' => 'format'], 'hierarchical' => false]);
-}
-add_action('init', 'register_photo_taxonomies');*/
-
 
 /**
  * Gère la pagination infinie AJAX pour les photos.
