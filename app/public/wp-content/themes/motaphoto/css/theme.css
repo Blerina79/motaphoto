@@ -681,9 +681,9 @@ button.nav-toggler {
 .burger-menu-content {
     display: none;
     position: fixed;
-    top: 80px;
+    top: 14vh;
     left: 0;
-    width: 425px;
+    width: 100vw;
     background-color: red;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     z-index: 999;
@@ -1285,7 +1285,8 @@ footer .footer-inner .site-navigation a:hover {
       @media screen and (max-width:450px) {
 
         #content{
-            max-width: 80%;
+            max-width: 80vw;
+            margin-top: 1vh;
         }
 
         .page-header{
@@ -1321,6 +1322,7 @@ footer .footer-inner .site-navigation a:hover {
             display:flex;
             flex-direction: column;
             align-items: flex-end;
+            margin-right: 10%;
         }
 
         .related-photos-container .photo-block {
@@ -1331,12 +1333,13 @@ footer .footer-inner .site-navigation a:hover {
 
         .entry-title{
             text-align: start;
+            font-size: 49px;
         }
 
         .photo-single{
             margin-bottom: 30px;
             margin-right: auto;
-            margin-left: auto;
+            margin-left: 20%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -1366,14 +1369,27 @@ footer .footer-inner .site-navigation a:hover {
             width: 250px;
             align-items: center;
             color: black;
-            
-        }
-
+         }     
     
       }
 
+  /************* -responsive - lightbox *************/
+  
+    @media screen and (max-width:450px) {
+        .containerLightbox {
+           width: 100vw;
+        }
+
+        .lightbox__close{
+            right: -14%;
+            top: -90px;
+        }
+    }
 
 
+
+
+   
 
 
     
