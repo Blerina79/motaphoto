@@ -105,10 +105,18 @@ h1{
     .related-photos-container {
         display: flex;
         justify-content: space-around;
-        max-width: 1150px;
+        max-width: 100vw;
         margin-left: 9.5%;
         margin-top: 30px;
+        gap: 5% !important;
     }
+
+    .line-down {
+        width: 92%;
+        border-top: 1px solid black;
+        margin-top: -5px;
+    }
+
 }
 
 
@@ -162,6 +170,7 @@ h1{
     position: relative;
     min-height: 950px;
     padding-top: -5%;
+    margin-top: -2%;
 }
 
 .photo-single{
@@ -238,7 +247,7 @@ p {
 }
 
 .line-down{
-    width: 66%;
+    width: 83%;
     border-top: 1px solid black;
     margin-top: -5px;
 }
@@ -302,9 +311,9 @@ div.photo-main{
     box-shadow: 0 0 10px 100px #E00000 inset!important;
 }*/
 
-option select {
+/*option select {
     box-shadow: 0 0 10px 100px #E00000 inset !important;
-}
+}*/
 
 
 #load-more-photos{
@@ -636,12 +645,6 @@ label {
 }
 
 
-
-.line-down {
-    width: 80%;
-    border-top: 1px solid black;
-    margin-top: -5px;
-}
 
 h3{
     font-family:'space mono'!important;
