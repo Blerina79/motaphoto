@@ -87,9 +87,11 @@ $table_prefix = 'wp_';
  *
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
-if ( ! defined( 'WP_DEBUG' ) ) {
-	define( 'WP_DEBUG', false );
-}
+define('WP_DEBUG', false);
+
+// Add these lines to set the site URL
+define('WP_HOME', 'http://motaphoto.local');
+define('WP_SITEURL', 'http://motaphoto.local');
 
 define( 'WP_ENVIRONMENT_TYPE', 'local' );
 /* That's all, stop editing! Happy publishing. */
